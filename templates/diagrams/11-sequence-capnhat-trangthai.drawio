@@ -1,0 +1,212 @@
+﻿<mxfile host="65bd71144e">
+    <diagram id="tab9-seq-capnhat" name="9. Sequence - Cap Nhat Trang Thai">
+        <mxGraphModel dx="692" dy="649" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="&lt;b&gt;SƠ ĐỒ TUẦN TỰ - Cập nhật trạng thái hồ sơ (UC-04)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="10" width="460" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor1" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="50" width="30" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor1_line" value="" style="line;strokeWidth=1;strokeColor=#999;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="54" y="100" width="1" height="650" as="geometry"/>
+                </mxCell>
+                <mxCell id="ll_react" value="React SPA" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="50" width="100" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="act_react" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapeStyle=umlLifeline;portConstraintRotation=0;sourcePortConstraint=none;" parent="ll_react" vertex="1">
+                    <mxGeometry x="45" y="70" width="10" height="600" as="geometry"/>
+                </mxCell>
+                <mxCell id="ll_auth" value="authMiddleware" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="50" width="100" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="act_auth" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapeStyle=umlLifeline;portConstraintRotation=0;sourcePortConstraint=none;" parent="ll_auth" vertex="1">
+                    <mxGeometry x="45" y="95" width="10" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="ll_ctrl" value="HoSoController" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="50" width="100" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="act_ctrl" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapeStyle=umlLifeline;portConstraintRotation=0;sourcePortConstraint=none;" parent="ll_ctrl" vertex="1">
+                    <mxGeometry x="45" y="165" width="10" height="475" as="geometry"/>
+                </mxCell>
+                <mxCell id="ll_svc" value="HoSoService" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="50" width="100" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="act_svc" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapeStyle=umlLifeline;portConstraintRotation=0;sourcePortConstraint=none;" parent="ll_svc" vertex="1">
+                    <mxGeometry x="45" y="190" width="10" height="425" as="geometry"/>
+                </mxCell>
+                <mxCell id="ll_repo" value="HoSoRepository" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="670" y="50" width="100" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="act_repo" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapeStyle=umlLifeline;portConstraintRotation=0;sourcePortConstraint=none;" parent="ll_repo" vertex="1">
+                    <mxGeometry x="45" y="215" width="10" height="360" as="geometry"/>
+                </mxCell>
+                <mxCell id="ll_lichsu" value="LichSuRepository" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="810" y="50" width="110" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="act_lichsu" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapeStyle=umlLifeline;portConstraintRotation=0;sourcePortConstraint=none;" parent="ll_lichsu" vertex="1">
+                    <mxGeometry x="50" y="354" width="10" height="155" as="geometry"/>
+                </mxCell>
+                <mxCell id="ll_db" value="Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="50" width="100" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="act_db" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapeStyle=umlLifeline;portConstraintRotation=0;sourcePortConstraint=none;" parent="ll_db" vertex="1">
+                    <mxGeometry x="45" y="238" width="10" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="tx_frame" value="transaction" style="shape=umlFrame;whiteSpace=wrap;html=1;width=80;height=15;boundedLbl=1;labelBackgroundColor=none;rounded=0;strokeColor=#FF6666;fillColor=none;dashed=1;dashPattern=3 3;fontStyle=1;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="840" y="417" width="195" height="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="alt_note1" value="[alt] hoSo == null&#10;→ throw NotFoundError" style="shape=note;whiteSpace=wrap;html=1;size=14;align=left;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=9;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="338" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="alt_note2" value="[alt] trangThai == current&#10;→ throw ValidationError" style="shape=note;whiteSpace=wrap;html=1;size=14;align=left;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=9;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="370" width="175" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="m1" value="Click cập nhật" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" target="act_react" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="55" y="120" as="sourcePoint"/>
+                        <mxPoint x="155" y="120" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m2" value="PATCH /ho-so/:id/trang-thai (JWT)" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=9;" parent="1" target="act_auth" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="165" y="145" as="sourcePoint"/>
+                        <mxPoint x="295" y="145" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m3" value="jwt.verify()" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="305" y="170" as="sourcePoint"/>
+                        <mxPoint x="305" y="198" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="345" y="170"/>
+                            <mxPoint x="345" y="198"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m4" value="next()" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" target="act_ctrl" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="305" y="215" as="sourcePoint"/>
+                        <mxPoint x="435" y="215" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m5" value="capNhatTrangThai(maHoSo, trangThai, ghiChu, userId)" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=8;" parent="1" target="act_svc" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="445" y="240" as="sourcePoint"/>
+                        <mxPoint x="575" y="240" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m6" value="findRawById(maHoSo)" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" target="act_repo" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="585" y="265" as="sourcePoint"/>
+                        <mxPoint x="715" y="265" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m7" value="SELECT * FROM HoSoTuyenSinh" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=9;" parent="1" target="act_db" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="725" y="288" as="sourcePoint"/>
+                        <mxPoint x="1005" y="288" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m8" value="row" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" source="act_db" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1005" y="310" as="sourcePoint"/>
+                        <mxPoint x="725" y="310" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m9" value="hoSo" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" source="act_repo" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="715" y="330" as="sourcePoint"/>
+                        <mxPoint x="585" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m12" value="capNhatTrangThaiVaGhiLichSu({maHoSo, old, new, ghiChu, userId})" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=8;" parent="1" target="act_lichsu" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="585" y="414" as="sourcePoint"/>
+                        <mxPoint x="860" y="414" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m13" value="BEGIN TRANSACTION" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontColor=#CC0000;fontStyle=1;fontSize=9;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="870" y="439" as="sourcePoint"/>
+                        <mxPoint x="1005" y="439" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m14" value="UPDATE HoSoTuyenSinh SET trangThai" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontColor=#CC0000;fontSize=9;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="870" y="464" as="sourcePoint"/>
+                        <mxPoint x="1005" y="464" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m15" value="INSERT INTO LichSuCapNhat" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontColor=#CC0000;fontSize=9;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="870" y="489" as="sourcePoint"/>
+                        <mxPoint x="1005" y="489" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m16" value="COMMIT" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontColor=#CC0000;fontStyle=1;fontSize=9;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="870" y="514" as="sourcePoint"/>
+                        <mxPoint x="1005" y="514" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m17" value="ok" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1005" y="536.9999999999998" as="sourcePoint"/>
+                        <mxPoint x="870" y="537" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m18" value="void" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" source="act_lichsu" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="860" y="557" as="sourcePoint"/>
+                        <mxPoint x="585" y="557" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m19" value="findById(maHoSo)" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="585" y="579" as="sourcePoint"/>
+                        <mxPoint x="714.9999999999998" y="579" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m20" value="SELECT JOIN 5 tables" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=9;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="725" y="602" as="sourcePoint"/>
+                        <mxPoint x="1005" y="601.9999999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m21" value="HoSoView" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1005" y="624" as="sourcePoint"/>
+                        <mxPoint x="725" y="624" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m22" value="view" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="714.9999999999998" y="634" as="sourcePoint"/>
+                        <mxPoint x="585" y="644" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m23" value="view" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="574.9999999999998" y="666.9999999999998" as="sourcePoint"/>
+                        <mxPoint x="445" y="667" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m24" value="200 + JSON" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="434.9999999999998" y="691.0000000000002" as="sourcePoint"/>
+                        <mxPoint x="165" y="691" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m25" value="Hiển thị kết quả" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="155" y="716.0000000000002" as="sourcePoint"/>
+                        <mxPoint x="55" y="716" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

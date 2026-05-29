@@ -1,0 +1,73 @@
+﻿<mxfile host="65bd71144e">
+    <diagram id="tab8-state" name="8. State - Ho So">
+        <mxGraphModel dx="843" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="800" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="st_title" value="&lt;b&gt;SƠ ĐỒ TRẠNG THÁI - Hồ Sơ Tuyển Sinh&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="20" width="460" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_init" value="" style="ellipse;html=1;shape=mxgraph.flowchart.start_2;fillColor=#000000;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="70" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_moi_nop" value="&lt;b&gt;moi_nop&lt;/b&gt;&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;Hồ sơ vừa nộp&lt;br&gt;Chưa ai xử lý" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#0288D1;fontSize=11;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="140" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_dang_kiem_tra" value="&lt;b&gt;dang_kiem_tra&lt;/b&gt;&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;User đang&lt;br&gt;xem xét hồ sơ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=11;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="290" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_thieu" value="&lt;b&gt;thieu_giay_to&lt;/b&gt;&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;Cần SV bổ sung&lt;br&gt;giấy tờ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="440" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_hoan_tat" value="&lt;b&gt;hoan_tat&lt;/b&gt;&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;Hồ sơ đầy đủ&lt;br&gt;SV được nhận" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=11;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="520" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_tu_choi" value="&lt;b&gt;tu_choi&lt;/b&gt;&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;Hồ sơ bị từ chối" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="730" y="440" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_end1" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#333333;strokeWidth=3;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="620" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_end2" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#333333;strokeWidth=3;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="590" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_e_init" value="Tạo hồ sơ" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333;strokeWidth=2;fontSize=10;" parent="1" source="st_init" target="st_moi_nop" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_e_1_2" value="Bắt đầu duyệt" style="strokeColor=#333;strokeWidth=2;fontSize=10;" parent="1" source="st_moi_nop" target="st_dang_kiem_tra" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_e_2_3" value="Thiếu giấy tờ" style="strokeColor=#333;strokeWidth=2;fontSize=10;" parent="1" source="st_dang_kiem_tra" target="st_thieu" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_e_2_4" value="Đủ điều kiện" style="strokeColor=#333;strokeWidth=2;fontSize=10;" parent="1" source="st_dang_kiem_tra" target="st_hoan_tat" edge="1">
+                    <mxGeometry x="-0.6532" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="st_e_2_5" value="Không đạt" style="strokeColor=#333;strokeWidth=2;fontSize=10;" parent="1" source="st_dang_kiem_tra" target="st_tu_choi" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_e_3_2" value="Đã bổ sung" style="strokeColor=#333;strokeWidth=2;fontSize=10;curved=1;" parent="1" source="st_thieu" target="st_dang_kiem_tra" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="235" y="325"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="st_e_3_5" value="Quá hạn" style="strokeColor=#333;strokeWidth=2;fontSize=10;" parent="1" source="st_thieu" target="st_tu_choi" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_e_4_end" style="strokeColor=#333;strokeWidth=2;" parent="1" source="st_hoan_tat" target="st_end1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_e_5_end" style="strokeColor=#333;strokeWidth=2;" parent="1" source="st_tu_choi" target="st_end2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_legend" value="&lt;b&gt;Chú thích màu:&lt;/b&gt;&lt;br&gt;Xanh = Mới nộp&lt;br&gt;Vang = Đang kiểm tra&lt;br&gt;Cam = Thiếu giấy tờ&lt;br&gt;Xanh la = Hoàn tất&lt;br&gt;Do = Từ chối" style="text;html=1;align=left;verticalAlign=top;resizable=0;points=[];autosize=1;strokeColor=#999;fillColor=#F5F5F5;fontSize=10;rounded=1;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="100" width="130" height="110" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

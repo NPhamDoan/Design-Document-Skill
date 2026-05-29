@@ -1,0 +1,199 @@
+﻿<mxfile host="65bd71144e">
+    <diagram id="tab5-class" name="5. Class Diagram - Phu tro">
+        <mxGraphModel dx="830" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="&lt;b&gt;SƠ ĐỒ LỚP — Các module phụ trợ&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="20" width="740" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="subtitle" value="&lt;i&gt;Auth · SinhVien · TepDinhKem · TaiKhoan · DanhMuc (Module HoSo có sơ đồ chi tiết riêng)&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="44" width="860" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="auth_ctrl" value="AuthController" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#BBDEFB;strokeColor=#0288D1;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="80" width="260" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="auth_ctrl_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ loginHandler(req, res): void&lt;br/&gt;+ refreshHandler(req, res): void&lt;br/&gt;+ logoutHandler(req, res): void&lt;br/&gt;+ meHandler(req, res): void&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="auth_ctrl" vertex="1">
+                    <mxGeometry y="26" width="260" height="114" as="geometry"/>
+                </mxCell>
+                <mxCell id="auth_svc" value="AuthService" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="300" width="260" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="auth_svc_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ dangNhap(tenDangNhap, matKhau)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;{tokens, user}&amp;gt;&lt;br/&gt;+ lamMoiToken(refreshToken)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;AccessToken&amp;gt;&lt;br/&gt;+ dangXuat(refreshToken): Promise&amp;lt;void&amp;gt;&lt;br/&gt;+ layThongTinUser(userId)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;TaiKhoan&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="auth_svc" vertex="1">
+                    <mxGeometry y="26" width="260" height="164" as="geometry"/>
+                </mxCell>
+                <mxCell id="auth_iface" value="&lt;i&gt;«interface»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;ITaiKhoanRepository&lt;/b&gt; +&lt;br/&gt;&lt;b&gt;IRefreshTokenRepository&lt;/b&gt;" style="shape=swimlane;fontSize=11;align=center;verticalAlign=top;startSize=52;horizontal=1;fillColor=#FFF9C4;strokeColor=#F57F17;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="520" width="260" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="auth_iface_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ findByTenDangNhap(...)&lt;br/&gt;+ findById(id), create(data)&lt;br/&gt;+ update(id, data)&lt;br/&gt;+ updateMatKhau, updateTrangThai&lt;br/&gt;──────────────────&lt;br/&gt;+ create(taiKhoanId, hash, hetHan)&lt;br/&gt;+ findByHash(hash)&lt;br/&gt;+ deleteById, deleteByHash&lt;br/&gt;+ deleteAllByTaiKhoanId(id)&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;fontStyle=2;" parent="auth_iface" vertex="1">
+                    <mxGeometry y="52" width="260" height="128" as="geometry"/>
+                </mxCell>
+                <mxCell id="auth_repo" value="TaiKhoanRepository + RefreshTokenRepository" style="shape=swimlane;fontSize=11;fontStyle=1;align=center;verticalAlign=top;startSize=40;horizontal=1;fillColor=#C8E6C9;strokeColor=#2E7D32;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="760" width="260" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="auth_repo_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;- db: Database&lt;br/&gt;&lt;i&gt;(implements 2 interfaces ở trên)&lt;/i&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="auth_repo" vertex="1">
+                    <mxGeometry y="40" width="260" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sv_ctrl" value="SinhVienController" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#BBDEFB;strokeColor=#0288D1;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="80" width="260" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="sv_ctrl_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ taoSinhVienHandler(req, res): void&lt;br/&gt;+ laySinhVienHandler(req, res): void&lt;br/&gt;+ uploadAvatarHandler(req, res): void&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="sv_ctrl" vertex="1">
+                    <mxGeometry y="26" width="260" height="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="sv_svc" value="SinhVienService" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="300" width="260" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="sv_svc_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ taoSinhVien(data)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;SinhVien&amp;gt;&lt;br/&gt;+ laySinhVien(maSinhVien)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;SinhVien&amp;gt;&lt;br/&gt;+ capNhatAvatar(maSinhVien, anhDaiDien)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;void&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="sv_svc" vertex="1">
+                    <mxGeometry y="26" width="260" height="124" as="geometry"/>
+                </mxCell>
+                <mxCell id="sv_iface" value="&lt;i&gt;«interface»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;ISinhVienRepository&lt;/b&gt;" style="shape=swimlane;fontSize=12;align=center;verticalAlign=top;startSize=40;horizontal=1;fillColor=#FFF9C4;strokeColor=#F57F17;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="520" width="260" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="sv_iface_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ findById(maSinhVien)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;SinhVien | null&amp;gt;&lt;br/&gt;+ create(data): Promise&amp;lt;SinhVien&amp;gt;&lt;br/&gt;+ updateAvatar(maSinhVien, anhDaiDien)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;void&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;fontStyle=2;" parent="sv_iface" vertex="1">
+                    <mxGeometry y="40" width="260" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="sv_repo" value="SinhVienRepository" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#C8E6C9;strokeColor=#2E7D32;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="760" width="260" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="sv_repo_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;- db: Database&lt;br/&gt;&lt;i&gt;(implements ISinhVienRepository)&lt;/i&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="sv_repo" vertex="1">
+                    <mxGeometry y="26" width="260" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="tdk_ctrl" value="TepDinhKemController" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#BBDEFB;strokeColor=#0288D1;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="80" width="260" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="tdk_ctrl_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ uploadTepHandler(req, res): void&lt;br/&gt;+ layTepTheoHoSoHandler(req, res): void&lt;br/&gt;+ xoaTepHandler(req, res): void&lt;br/&gt;+ downloadTepHandler(req, res): void&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="tdk_ctrl" vertex="1">
+                    <mxGeometry y="26" width="260" height="114" as="geometry"/>
+                </mxCell>
+                <mxCell id="tdk_svc" value="TepDinhKemService" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="300" width="260" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="tdk_svc_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ themTepDinhKem(data)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;TepDinhKem&amp;gt;&lt;br/&gt;+ layDanhSachTepTheoHoSo(maHoSo)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;TepDinhKem[]&amp;gt;&lt;br/&gt;+ xoaTepDinhKem(maTep)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;void&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="tdk_svc" vertex="1">
+                    <mxGeometry y="26" width="260" height="154" as="geometry"/>
+                </mxCell>
+                <mxCell id="tdk_iface" value="&lt;i&gt;«interface»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;ITepDinhKemRepository&lt;/b&gt;" style="shape=swimlane;fontSize=12;align=center;verticalAlign=top;startSize=40;horizontal=1;fillColor=#FFF9C4;strokeColor=#F57F17;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="520" width="260" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="tdk_iface_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ findById(maTep)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;TepDinhKem | null&amp;gt;&lt;br/&gt;+ findByHoSo(maHoSo)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;TepDinhKem[]&amp;gt;&lt;br/&gt;+ create(data): Promise&amp;lt;TepDinhKem&amp;gt;&lt;br/&gt;+ delete(maTep): Promise&amp;lt;void&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;fontStyle=2;" parent="tdk_iface" vertex="1">
+                    <mxGeometry y="40" width="260" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="tdk_repo" value="TepDinhKemRepository" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#C8E6C9;strokeColor=#2E7D32;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="760" width="260" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="tdk_repo_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;- db: Database&lt;br/&gt;&lt;i&gt;(implements ITepDinhKemRepository)&lt;/i&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="tdk_repo" vertex="1">
+                    <mxGeometry y="26" width="260" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="tk_ctrl" value="TaiKhoanController" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#BBDEFB;strokeColor=#0288D1;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="80" width="260" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="tk_ctrl_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ layDanhSachHandler(req, res): void&lt;br/&gt;+ taoTaiKhoanHandler(req, res): void&lt;br/&gt;+ capNhatTaiKhoanHandler(req, res): void&lt;br/&gt;+ capNhatTrangThaiHandler(req, res): void&lt;br/&gt;+ datLaiMatKhauHandler(req, res): void&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="tk_ctrl" vertex="1">
+                    <mxGeometry y="26" width="260" height="134" as="geometry"/>
+                </mxCell>
+                <mxCell id="tk_svc" value="TaiKhoanService" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="300" width="260" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="tk_svc_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ layDanhSach()&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;TaiKhoan[]&amp;gt;&lt;br/&gt;+ taoTaiKhoan(data)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;TaiKhoan&amp;gt;&lt;br/&gt;+ capNhatTaiKhoan(id, data)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;TaiKhoan&amp;gt;&lt;br/&gt;+ capNhatTrangThai(id, trangThai)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;TaiKhoan&amp;gt;&lt;br/&gt;+ datLaiMatKhau(id, matKhauMoi)&lt;br/&gt;&amp;nbsp;&amp;nbsp;: Promise&amp;lt;void&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="tk_svc" vertex="1">
+                    <mxGeometry y="26" width="260" height="174" as="geometry"/>
+                </mxCell>
+                <mxCell id="tk_iface" value="&lt;i&gt;«interface»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;ITaiKhoanRepository&lt;/b&gt;" style="shape=swimlane;fontSize=12;align=center;verticalAlign=top;startSize=40;horizontal=1;fillColor=#FFF9C4;strokeColor=#F57F17;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="520" width="260" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="tk_iface_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ findAll(): Promise&amp;lt;TaiKhoan[]&amp;gt;&lt;br/&gt;+ findById(id), count()&lt;br/&gt;+ findByTenDangNhap(...)&lt;br/&gt;+ create(data)&lt;br/&gt;+ update(id, data)&lt;br/&gt;+ updateMatKhau(id, hash)&lt;br/&gt;+ updateTrangThai(id, trangThai)&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;fontStyle=2;" parent="tk_iface" vertex="1">
+                    <mxGeometry y="40" width="260" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="tk_repo" value="TaiKhoanRepository" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#C8E6C9;strokeColor=#2E7D32;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="750" width="260" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="tk_repo_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;- db: Database&lt;br/&gt;&lt;i&gt;(implements ITaiKhoanRepository)&lt;/i&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="tk_repo" vertex="1">
+                    <mxGeometry y="26" width="260" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="dm_ctrl" value="DanhMucController" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#BBDEFB;strokeColor=#0288D1;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="80" width="260" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="dm_ctrl_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ CRUD handlers cho NamTuyenSinh&lt;br/&gt;+ CRUD handlers cho DotTuyenSinh&lt;br/&gt;+ CRUD handlers cho NganhDangKy&lt;br/&gt;+ CRUD handlers cho HeDaoTao&lt;br/&gt;&lt;i&gt;(layDanhSach/them/capNhat/xoa × 4)&lt;/i&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="dm_ctrl" vertex="1">
+                    <mxGeometry y="26" width="260" height="134" as="geometry"/>
+                </mxCell>
+                <mxCell id="dm_svc" value="DanhMucService" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="300" width="260" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="dm_svc_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;&lt;i&gt;(re-exports 4 catalog repos)&lt;/i&gt;&lt;br/&gt;+ namTuyenSinh: ICatalogRepository&lt;br/&gt;+ dotTuyenSinh: ICatalogRepository&lt;br/&gt;+ nganhDangKy: ICatalogRepository&lt;br/&gt;+ heDaoTao: ICatalogRepository&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="dm_svc" vertex="1">
+                    <mxGeometry y="26" width="260" height="154" as="geometry"/>
+                </mxCell>
+                <mxCell id="dm_iface" value="&lt;i&gt;«interface»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;ICatalogRepository&amp;lt;T&amp;gt;&lt;/b&gt;" style="shape=swimlane;fontSize=12;align=center;verticalAlign=top;startSize=40;horizontal=1;fillColor=#FFF9C4;strokeColor=#F57F17;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="520" width="260" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="dm_iface_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;+ findAll(): Promise&amp;lt;T[]&amp;gt;&lt;br/&gt;+ findAllActive(): Promise&amp;lt;T[]&amp;gt;&lt;br/&gt;+ findById(id): Promise&amp;lt;T | null&amp;gt;&lt;br/&gt;+ create(data): Promise&amp;lt;T&amp;gt;&lt;br/&gt;+ update(id, data): Promise&amp;lt;T&amp;gt;&lt;br/&gt;+ delete(id): Promise&amp;lt;void&amp;gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;fontStyle=2;" parent="dm_iface" vertex="1">
+                    <mxGeometry y="40" width="260" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="dm_repo" value="CatalogRepository&amp;lt;T&amp;gt;" style="shape=swimlane;fontSize=12;fontStyle=1;align=center;verticalAlign=top;startSize=26;horizontal=1;fillColor=#C8E6C9;strokeColor=#2E7D32;swimlaneFillColor=#FFFFFF;rounded=0;collapsible=0;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="750" width="260" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="dm_repo_b" value="&lt;span style='font-family:Consolas,monospace;font-size:10px;'&gt;- db: Database&lt;br/&gt;- tableName: string&lt;br/&gt;&lt;i&gt;(implements ICatalogRepository&amp;lt;T&amp;gt;)&lt;/i&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;spacingRight=4;html=1;whiteSpace=wrap;" parent="dm_repo" vertex="1">
+                    <mxGeometry y="26" width="260" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_auth_cs" value="«uses»" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;strokeWidth=1.5;" parent="1" source="auth_ctrl" target="auth_svc" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_auth_si" value="«depends»" style="endArrow=open;dashed=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;" parent="1" source="auth_svc" target="auth_iface" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_auth_ri" value="«implements»" style="endArrow=block;endFill=0;dashed=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=9;strokeWidth=1.5;" parent="1" source="auth_repo" target="auth_iface" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_sv_cs" value="«uses»" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;strokeWidth=1.5;" parent="1" source="sv_ctrl" target="sv_svc" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_sv_si" value="«depends»" style="endArrow=open;dashed=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;" parent="1" source="sv_svc" target="sv_iface" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_sv_ri" value="«implements»" style="endArrow=block;endFill=0;dashed=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=9;strokeWidth=1.5;" parent="1" source="sv_repo" target="sv_iface" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_tdk_cs" value="«uses»" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;strokeWidth=1.5;" parent="1" source="tdk_ctrl" target="tdk_svc" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_tdk_si" value="«depends»" style="endArrow=open;dashed=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;" parent="1" source="tdk_svc" target="tdk_iface" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_tdk_ri" value="«implements»" style="endArrow=block;endFill=0;dashed=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=9;strokeWidth=1.5;" parent="1" source="tdk_repo" target="tdk_iface" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_tk_cs" value="«uses»" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;strokeWidth=1.5;" parent="1" source="tk_ctrl" target="tk_svc" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_tk_si" value="«depends»" style="endArrow=open;dashed=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;" parent="1" source="tk_svc" target="tk_iface" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_tk_ri" value="«implements»" style="endArrow=block;endFill=0;dashed=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=9;strokeWidth=1.5;" parent="1" source="tk_repo" target="tk_iface" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_dm_cs" value="«uses»" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;strokeWidth=1.5;" parent="1" source="dm_ctrl" target="dm_svc" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_dm_si" value="«depends»" style="endArrow=open;dashed=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;" parent="1" source="dm_svc" target="dm_iface" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_dm_ri" value="«implements»" style="endArrow=block;endFill=0;dashed=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=9;strokeWidth=1.5;" parent="1" source="dm_repo" target="dm_iface" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_box" value="&lt;b&gt;Chú thích&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#9E9E9E;fontSize=11;align=center;verticalAlign=top;spacingTop=4;" parent="1" vertex="1">
+                    <mxGeometry x="1170" y="880" width="260" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_ctrl" value="Controller" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#0288D1;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1180" y="905" width="90" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_svc" value="Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1180" y="932" width="90" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_iface" value="«interface»" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;fontStyle=2;" parent="1" vertex="1">
+                    <mxGeometry x="1180" y="959" width="90" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_repo" value="Repository" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1180" y="986" width="90" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_text" value="&lt;span style=&quot;font-size:10px;&quot;&gt;&lt;b&gt;Pattern:&lt;/b&gt; Routes → Controllers&lt;br&gt;→ Services → Repositories&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=top;strokeColor=none;fillColor=none;fontSize=9;spacingLeft=4;spacingTop=2;" parent="1" vertex="1">
+                    <mxGeometry x="1280" y="905" width="150" height="150" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

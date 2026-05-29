@@ -1,0 +1,52 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-05-13" agent="app.diagrams.net" version="24.0.0">
+  <diagram id="tab1-context" name="1. Context Diagram">
+    <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="800">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="ctx_title" value="&lt;b&gt;SƠ ĐỒ BỐI CẢNH HỆ THỐNG (System Context Diagram)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="600" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx_staff" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#29B6F6;strokeColor=#0288D1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="280" width="40" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx_admin" value="Quản trị viên" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#29B6F6;strokeColor=#0288D1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="480" width="40" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx_system" value="&lt;b&gt;Hệ thống QuanLyTS&lt;/b&gt;&lt;br&gt;(React SPA + Node.js API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#AB47BC;strokeColor=#7B1FA2;fontColor=#FFFFFF;fontSize=13;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="400" y="320" width="280" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx_db" value="&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;()" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#26C6DA;strokeColor=#00838F;fontColor=#FFFFFF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="260" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx_uploads" value="&lt;b&gt;/uploads/&lt;/b&gt;&lt;br&gt;File storage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#26C6DA;strokeColor=#00838F;fontColor=#FFFFFF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="420" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx_arr1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="ctx_staff" target="ctx_system" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx_arr1_lbl" value="Tạo/tra cứu hồ sơ [HTTPS]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="ctx_arr1">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="ctx_arr2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="ctx_admin" target="ctx_system" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx_arr2_lbl" value="Quản lý tài khoản + danh mục [HTTPS]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="ctx_arr2">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="ctx_arr3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="ctx_system" target="ctx_db" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx_arr3_lbl" value="SQL thuần []" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="ctx_arr3">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="ctx_arr4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="ctx_system" target="ctx_uploads" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx_arr4_lbl" value="Lưu file [filesystem]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=10;" vertex="1" connectable="0" parent="ctx_arr4">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

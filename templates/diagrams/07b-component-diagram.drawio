@@ -1,0 +1,173 @@
+<mxfile host="65bd71144e">
+    <diagram id="tab5b-component" name="5.1 Component Diagram">
+        <mxGraphModel dx="830" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="&lt;b&gt;SƠ ĐỒ COMPONENT — Hệ thống Quản lý Tuyển sinh&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="15" width="700" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="lbl_fe" value="&lt;b&gt;Frontend&lt;/b&gt;&lt;br&gt;Layer" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontColor=#1976D2;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="105" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="lbl_gw" value="&lt;b&gt;Gateway&lt;/b&gt;&lt;br&gt;Layer" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontColor=#F57C00;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="225" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="lbl_svc" value="&lt;b&gt;Service&lt;/b&gt;&lt;br&gt;Layer" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontColor=#7B1FA2;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="450" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="lbl_data" value="&lt;b&gt;Data&lt;/b&gt;&lt;br&gt;Layer" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontColor=#2E7D32;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="850" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="web_client" value="&lt;span style='font-style:italic;font-size:10px;color:#555;'&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style='font-size:14px;'&gt;⚙ Web Client&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:11px;'&gt;React 19 SPA — gồm: Auth Module, Admissions Module, Admin Module&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;strokeWidth=2;verticalAlign=middle;align=center;fontSize=12;fontColor=#0D47A1;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="75" width="1240" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="gateway" value="&lt;span style='font-style:italic;font-size:10px;color:#555;'&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style='font-size:14px;'&gt;⚙ API Gateway (Express)&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:11px;'&gt;Routing + Middleware: Auth · Rate Limiter · CORS · Multer Upload&lt;/span&gt;&lt;br&gt;&lt;span style='font-size:10px;color:#666;'&gt;Provides: REST API&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;strokeWidth=2;verticalAlign=middle;align=center;fontSize=12;fontColor=#E65100;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="200" width="1240" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="svc_auth" value="&lt;span style='font-style:italic;font-size:9px;color:#666;'&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style='font-size:13px;'&gt;⚙ Auth Service&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:9px;'&gt;Đăng nhập, JWT, refresh token&lt;/span&gt;&lt;hr size='1'&gt;&lt;span style='font-size:9px;'&gt;Provides: IAuthAPI&lt;br&gt;Requires: ITaiKhoanRepo, IRefreshTokenRepo&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;verticalAlign=top;align=center;spacingTop=4;fontSize=11;fontColor=#4A148C;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="345" width="400" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="svc_hoso" value="&lt;span style='font-style:italic;font-size:9px;color:#666;'&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style='font-size:13px;'&gt;⚙ HoSo Service&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:9px;'&gt;Quản lý hồ sơ tuyển sinh&lt;/span&gt;&lt;hr size='1'&gt;&lt;span style='font-size:9px;'&gt;Provides: IHoSoAPI&lt;br&gt;Requires: IHoSoRepo, ILichSuRepo&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;verticalAlign=top;align=center;spacingTop=4;fontSize=11;fontColor=#4A148C;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="345" width="400" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="svc_sv" value="&lt;span style='font-style:italic;font-size:9px;color:#666;'&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style='font-size:13px;'&gt;⚙ SinhVien Service&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:9px;'&gt;Quản lý lý lịch sinh viên&lt;/span&gt;&lt;hr size='1'&gt;&lt;span style='font-size:9px;'&gt;Provides: ISinhVienAPI&lt;br&gt;Requires: ISinhVienRepo&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;verticalAlign=top;align=center;spacingTop=4;fontSize=11;fontColor=#4A148C;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="345" width="400" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="svc_tep" value="&lt;span style='font-style:italic;font-size:9px;color:#666;'&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style='font-size:13px;'&gt;⚙ TepDinhKem Service&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:9px;'&gt;Tải/lưu tệp đính kèm&lt;/span&gt;&lt;hr size='1'&gt;&lt;span style='font-size:9px;'&gt;Provides: ITepDinhKemAPI&lt;br&gt;Requires: ITepDinhKemRepo, FileSystem&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;verticalAlign=top;align=center;spacingTop=4;fontSize=11;fontColor=#4A148C;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="485" width="400" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="svc_tk" value="&lt;span style='font-style:italic;font-size:9px;color:#666;'&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style='font-size:13px;'&gt;⚙ TaiKhoan Service&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:9px;'&gt;Quản lý tài khoản người dùng&lt;/span&gt;&lt;hr size='1'&gt;&lt;span style='font-size:9px;'&gt;Provides: ITaiKhoanAPI&lt;br&gt;Requires: ITaiKhoanRepo, IRefreshTokenRepo&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;verticalAlign=top;align=center;spacingTop=4;fontSize=11;fontColor=#4A148C;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="485" width="400" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="svc_dm" value="&lt;span style='font-style:italic;font-size:9px;color:#666;'&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style='font-size:13px;'&gt;⚙ DanhMuc Service&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:9px;'&gt;Năm/Đợt/Ngành/Hệ đào tạo&lt;/span&gt;&lt;hr size='1'&gt;&lt;span style='font-size:9px;'&gt;Provides: IDanhMucAPI&lt;br&gt;Requires: ICatalogRepo&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;verticalAlign=top;align=center;spacingTop=4;fontSize=11;fontColor=#4A148C;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="485" width="400" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="repo_module" value="&lt;span style=&quot;font-style:italic;font-size:10px;color:#555;&quot;&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style=&quot;font-size:14px;&quot;&gt;⚙ Repository Module&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;&quot;&gt;Data access layer&amp;nbsp;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;verticalAlign=middle;align=center;fontSize=12;fontColor=#1B5E20;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="640" width="680" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="db" value="&lt;span style='font-style:italic;font-size:10px;color:#555;'&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style='font-size:13px;'&gt;Database&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:10px;'&gt;Lưu dữ liệu hệ thống&lt;/span&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#A5D6A7;strokeColor=#2E7D32;strokeWidth=2;fontSize=11;fontColor=#1B5E20;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="810" width="280" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="files" value="&lt;span style='font-style:italic;font-size:10px;color:#555;'&gt;«component»&lt;/span&gt;&lt;br&gt;&lt;b style='font-size:13px;'&gt;File Storage&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:10px;'&gt;/uploads/ — filesystem&lt;/span&gt;" style="shape=folder;whiteSpace=wrap;html=1;tabPosition=left;fillColor=#A5D6A7;strokeColor=#2E7D32;strokeWidth=2;fontSize=11;fontColor=#1B5E20;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="800" width="280" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_wc_gw" value="«use» REST API + JWT" style="endArrow=open;endFill=0;html=1;strokeColor=#444444;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;fontStyle=2;fontColor=#1976D2;labelBackgroundColor=#FFFFFF;" parent="1" source="web_client" target="gateway" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_gw_auth" value="/auth" style="endArrow=open;endFill=0;html=1;strokeColor=#666666;exitX=0.161;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontStyle=2;fontColor=#555;labelBackgroundColor=#FFFFFF;exitPerimeter=0;" parent="1" source="gateway" target="svc_auth" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_gw_hoso" value="/ho-so" style="endArrow=open;endFill=0;html=1;strokeColor=#666666;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontStyle=2;fontColor=#555;labelBackgroundColor=#FFFFFF;" parent="1" source="gateway" target="svc_hoso" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_gw_sv" value="/sinhvien" style="endArrow=open;endFill=0;html=1;strokeColor=#666666;exitX=0.85;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontStyle=2;fontColor=#555;labelBackgroundColor=#FFFFFF;" parent="1" source="gateway" target="svc_sv" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_gw_tep" value="/tep-dinh-kem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#666666;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;fontSize=10;fontStyle=2;fontColor=#555;labelBackgroundColor=#FFFFFF;" parent="1" source="gateway" target="svc_tep" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="80" y="255"/>
+                            <mxPoint x="80" y="520"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_gw_tk" value="/admin/tai-khoan" style="endArrow=open;endFill=0;html=1;strokeColor=#666666;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontStyle=2;fontColor=#555;labelBackgroundColor=#FFFFFF;" parent="1" edge="1">
+                    <mxGeometry x="-0.8857" relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="861" y="326"/>
+                            <mxPoint x="861" y="481"/>
+                        </Array>
+                        <mxPoint x="861" y="316" as="sourcePoint"/>
+                        <mxPoint x="861" y="491" as="targetPoint"/>
+                        <mxPoint y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_gw_dm" value="/admin/danh-muc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#666666;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.3;entryDx=0;entryDy=0;fontSize=10;fontStyle=2;fontColor=#555;labelBackgroundColor=#FFFFFF;" parent="1" source="gateway" target="svc_dm" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1380" y="255"/>
+                            <mxPoint x="1380" y="520"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_auth_repo" style="endArrow=open;endFill=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="svc_auth" target="repo_module" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="540" y="640" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="320" y="470"/>
+                            <mxPoint x="530" y="470"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_hoso_repo" style="endArrow=open;endFill=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="svc_hoso" target="repo_module" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="530" y="640" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="740" y="470"/>
+                            <mxPoint x="530" y="470"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_sv_repo" style="endArrow=open;endFill=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="svc_sv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="950" y="640" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1160" y="470"/>
+                            <mxPoint x="950" y="470"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_tep_repo" style="endArrow=open;endFill=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.082;entryY=-0.016;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="svc_tep" target="repo_module" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_tk_repo" style="endArrow=open;endFill=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="svc_tk" target="repo_module" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_dm_repo" style="endArrow=open;endFill=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.85;entryY=0;entryDx=0;entryDy=0;" parent="1" source="svc_dm" target="repo_module" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_repo_db" value="«use» SQL queries" style="endArrow=open;endFill=0;html=1;strokeColor=#2E7D32;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;fontStyle=2;fontColor=#1B5E20;labelBackgroundColor=#FFFFFF;" parent="1" source="repo_module" target="db" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_tep_files" value="«use» FileSystem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#2E7D32;strokeWidth=2;fontSize=11;fontStyle=2;fontColor=#1B5E20;labelBackgroundColor=#FFFFFF;" parent="1" target="files" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                        <mxPoint x="220" y="600" as="sourcePoint"/>
+                        <mxPoint x="210" y="830" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="legend_box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#9E9E9E;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="1110" y="680" width="190" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_title" value="&lt;b&gt;Chú thích (Legend)&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#212121;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="685" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg_fe_sw" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="710" width="20" height="12" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg_fe_t" value="Frontend" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#1976D2;" parent="1" vertex="1">
+                    <mxGeometry x="1145" y="708" width="80" height="16" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg_gw_sw" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;" parent="1" vertex="1">
+                    <mxGeometry x="1225" y="710" width="20" height="12" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg_gw_t" value="Gateway" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#F57C00;" parent="1" vertex="1">
+                    <mxGeometry x="1250" y="708" width="80" height="16" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg_svc_sw" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="730" width="20" height="12" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg_svc_t" value="Service" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#7B1FA2;" parent="1" vertex="1">
+                    <mxGeometry x="1145" y="728" width="80" height="16" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg_data_sw" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;" parent="1" vertex="1">
+                    <mxGeometry x="1225" y="730" width="20" height="12" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg_data_t" value="Data" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;fontColor=#2E7D32;" parent="1" vertex="1">
+                    <mxGeometry x="1250" y="728" width="80" height="16" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

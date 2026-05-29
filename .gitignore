@@ -1,0 +1,5 @@
+﻿node_modules/
+*.docx
+*.png
+.DS_Store
+Thumbs.db

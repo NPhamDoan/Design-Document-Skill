@@ -1,0 +1,103 @@
+﻿<mxfile host="app.diagrams.net" modified="2026-05-13" agent="app.diagrams.net" version="24.0.0">
+  <diagram id="tab2-usecase" name="2. Use Case">
+    <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="800">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="uc_title" value="&lt;b&gt;SƠ ĐỒ USE CASE - Hệ thống Quản lý Tuyển sinh&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="250" y="15" width="600" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_staff" value="User&lt;br&gt;(staff)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#29B6F6;strokeColor=#0288D1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="340" width="40" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_admin" value="Quản trị viên&lt;br&gt;(admin)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#29B6F6;strokeColor=#0288D1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="40" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_boundary" value="Hệ thống Quản lý Tuyển sinh" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#333333;strokeWidth=2;dashed=0;verticalAlign=top;fontSize=13;fontStyle=1;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="250" y="60" width="700" height="700" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc01" value="UC-01: Đăng nhập" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="100" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc02" value="UC-02: Tạo hồ sơ tuyen sinh" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="210" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc03" value="UC-03: Tra cứu &amp; lọc hồ sơ" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="320" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc04" value="UC-04: Cập nhật trạng thái hồ sơ" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="430" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc05" value="UC-05: Upload tệp đính kèm" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="430" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc06" value="UC-06: Quản lý tài khoản" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="560" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc07" value="UC-07: Quản lý danh mục" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="660" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_inherit" style="endArrow=block;endFill=0;endSize=12;strokeColor=#333333;strokeWidth=2;" edge="1" source="uc_admin" target="uc_staff" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_s_01" style="strokeColor=#333333;" edge="1" source="uc_staff" target="uc01" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_s_02" style="strokeColor=#333333;" edge="1" source="uc_staff" target="uc02" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_s_03" style="strokeColor=#333333;" edge="1" source="uc_staff" target="uc03" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_s_04" style="strokeColor=#333333;" edge="1" source="uc_staff" target="uc04" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_s_05" style="strokeColor=#333333;" edge="1" source="uc_staff" target="uc05" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_a_06" style="strokeColor=#333333;" edge="1" source="uc_admin" target="uc06" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_a_07" style="strokeColor=#333333;" edge="1" source="uc_admin" target="uc07" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_inc1" style="strokeColor=#999999;dashed=1;" edge="1" source="uc02" target="uc01" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_inc1_lbl" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="uc_inc1">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="uc_inc2" style="strokeColor=#999999;dashed=1;" edge="1" source="uc03" target="uc01" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_inc2_lbl" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="uc_inc2">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="uc_inc3" style="strokeColor=#999999;dashed=1;" edge="1" source="uc04" target="uc01" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_inc3_lbl" value="&lt;i&gt;&amp;lt;&amp;lt;include&amp;gt;&amp;gt;&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="uc_inc3">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="uc_ext1" style="strokeColor=#999999;dashed=1;" edge="1" source="uc05" target="uc04" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_ext1_lbl" value="&lt;i&gt;&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="uc_ext1">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+        <mxCell id="uc08" value="UC-08: Xem lịch sử cập nhật hồ sơ" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="540" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_s_08" style="strokeColor=#333333;" edge="1" source="uc_staff" target="uc08" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_ext2" style="strokeColor=#999999;dashed=1;" edge="1" source="uc08" target="uc04" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_ext2_lbl" value="&lt;i&gt;&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;" vertex="1" connectable="0" parent="uc_ext2">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,185 @@
+<mxfile host="65bd71144e">
+    <diagram id="tab4-activity" name="4. Activity - Cap Nhat Trang Thai">
+        <mxGraphModel dx="827" dy="647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="act4_title" value="&lt;b&gt;SƠ ĐỒ HOẠT ĐỘNG - Luồng cập nhật trạng thái (UC-04)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="10" width="560" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_lane1_bg" value="&lt;b style=&quot;border-color: rgb(218, 220, 224); font-size: 11px; text-align: left;&quot;&gt;Frontend&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#0288D1;strokeWidth=2;dashed=1;dashPattern=8 4;verticalAlign=top;fontSize=12;fontColor=#0288D1;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="50" width="380" height="730" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_lane2_bg" value="&lt;b style=&quot;border-color: rgb(218, 220, 224); font-size: 11px; text-align: left;&quot;&gt;Backend (Node.js)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#F57C00;strokeWidth=2;dashed=1;dashPattern=8 4;verticalAlign=top;fontSize=12;fontColor=#F57C00;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="50" width="420" height="730" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_start" value="" style="ellipse;html=1;shape=mxgraph.flowchart.start_2;fillColor=#000000;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="265" y="112" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_a1" value="Mở chi tiết hồ sơ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#0288D1;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="195" y="162" width="170" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_a2" value="Chọn trạng thái mới từ dropdown" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#0288D1;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="222" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_a3" value="Nhập ghi chú lý do" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#0288D1;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="195" y="282" width="170" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_a4" value="Bấm nút &quot;Cập nhật&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#0288D1;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="195" y="347" width="170" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_dec_fe" value="Thành công?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="347.5" y="517.5" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_err_fe" value="Hiển thị thông báo lỗi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="165" y="535" width="145" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_end_err" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#333333;strokeWidth=3;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="222.5" y="600" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_succ_fe" value="Hiển thị hồ sơ đã cập nhật" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="630" width="185" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_end_succ" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#333333;strokeWidth=3;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="387.5" y="690" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_dec_jwt" value="Token JWT&lt;br&gt;hợp lệ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="748" y="130" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_401" value="Trả HTTP 401" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="145" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_b1" value="Lấy trạng thái hiện tại&lt;br&gt;(findRawById)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="693" y="230" width="220" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_dec_exists" value="Hồ sơ&lt;br&gt;tồn tại?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="748" y="305" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_404" value="Trả HTTP 404" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="320" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_dec_status" value="Trạng thái mới&lt;br&gt;≠ hiện tại?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="743" y="410" width="120" height="75" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_400" value="Trả 400 &quot;Trạng thái phải khác&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="555" y="428" width="170" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_b2" value="&lt;b&gt;Atomic transaction:&lt;/b&gt;&lt;br&gt;Cập nhật trạng thái + Ghi lịch sử&lt;br&gt;(capNhatTrangThaiVaGhiLichSu)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="673" y="525" width="260" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_b3" value="SELECT JOIN lấy HoSoView đầy đủ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#F57C00;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="693" y="610" width="220" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_b4" value="Trả HTTP 200 + HoSoView" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="703" y="680" width="200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_s_a1" style="strokeColor=#333;" parent="1" source="act4_start" target="act4_a1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_a1_a2" style="strokeColor=#333;" parent="1" source="act4_a1" target="act4_a2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_a2_a3" style="strokeColor=#333;" parent="1" source="act4_a2" target="act4_a3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_a3_a4" style="strokeColor=#333;" parent="1" source="act4_a3" target="act4_a4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_dec_err" style="strokeColor=#333;" parent="1" source="act4_dec_fe" target="act4_err_fe" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_dec_err_lbl" value="Không" style="edgeLabel;html=1;fontSize=9;" parent="act4_e_dec_err" vertex="1" connectable="0">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="act4_e_dec_succ" style="strokeColor=#333;" parent="1" source="act4_dec_fe" target="act4_succ_fe" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_dec_succ_lbl" value="Có" style="edgeLabel;html=1;fontSize=9;" parent="act4_e_dec_succ" vertex="1" connectable="0">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="act4_e_err_end" style="strokeColor=#333;" parent="1" source="act4_err_fe" target="act4_end_err" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_succ_end" style="strokeColor=#333;" parent="1" source="act4_succ_fe" target="act4_end_succ" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_jwt_401" style="strokeColor=#333;" parent="1" source="act4_dec_jwt" target="act4_401" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_jwt_401_lbl" value="Không" style="edgeLabel;html=1;fontSize=9;" parent="act4_e_jwt_401" vertex="1" connectable="0">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="act4_e_jwt_b1" style="strokeColor=#333;" parent="1" source="act4_dec_jwt" target="act4_b1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_jwt_b1_lbl" value="Có" style="edgeLabel;html=1;fontSize=9;" parent="act4_e_jwt_b1" vertex="1" connectable="0">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="act4_e_b1_exists" style="strokeColor=#333;" parent="1" source="act4_b1" target="act4_dec_exists" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_exists_404" style="strokeColor=#333;" parent="1" source="act4_dec_exists" target="act4_404" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_exists_404_lbl" value="Không" style="edgeLabel;html=1;fontSize=9;" parent="act4_e_exists_404" vertex="1" connectable="0">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="act4_e_exists_status" style="strokeColor=#333;" parent="1" source="act4_dec_exists" target="act4_dec_status" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_exists_status_lbl" value="Có" style="edgeLabel;html=1;fontSize=9;" parent="act4_e_exists_status" vertex="1" connectable="0">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="act4_e_status_400" style="strokeColor=#333;" parent="1" source="act4_dec_status" target="act4_400" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_status_400_lbl" value="Không" style="edgeLabel;html=1;fontSize=9;" parent="act4_e_status_400" vertex="1" connectable="0">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="act4_e_status_b2" style="strokeColor=#333;" parent="1" source="act4_dec_status" target="act4_b2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_status_b2_lbl" value="Có" style="edgeLabel;html=1;fontSize=9;" parent="act4_e_status_b2" vertex="1" connectable="0">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="act4_e_b2_b3" style="strokeColor=#333;" parent="1" source="act4_b2" target="act4_b3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="act4_e_b3_b4" style="strokeColor=#333;" parent="1" source="act4_b3" target="act4_b4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="cross4_a4_jwt" value="PATCH /ho-so/:id/trang-thai" style="strokeColor=#666;dashed=1;fontSize=9;" parent="1" source="act4_a4" target="act4_dec_jwt" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="cross4_b4_dec" value="JSON response" style="strokeColor=#2E7D32;dashed=1;fontSize=9;" parent="1" source="act4_b4" target="act4_dec_fe" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="cross4_401_dec" style="strokeColor=#C62828;dashed=1;" parent="1" source="act4_401" target="act4_dec_fe" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="cross4_404_dec" style="strokeColor=#C62828;dashed=1;" parent="1" source="act4_404" target="act4_dec_fe" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="cross4_400_dec" style="strokeColor=#C62828;dashed=1;" parent="1" source="act4_400" target="act4_dec_fe" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
