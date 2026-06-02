@@ -1,52 +1,59 @@
-# Render tất cả file .drawio sang PNG bằng draw.io desktop CLI
-# Yêu cầu: cài draw.io desktop (winget install JGraph.Draw)
+# Wrapper gọi tools/render-diagrams.mjs
+# Pipeline: drawio CLI -> SVG -> Puppeteer -> PNG
+#
+# Cách dùng:
+#   .\scripts\render.ps1                         # render toàn bộ
+#   .\scripts\render.ps1 -File 07b               # filter theo tên
+#   .\scripts\render.ps1 -KeepSvg                # giữ lại file SVG để debug
+#   .\scripts\render.ps1 -Scale 3                # PNG độ phân giải x3
+#   .\scripts\render.ps1 -Border 30              # padding 30px
+
+[CmdletBinding()]
+param(
+    [string]$File = "",
+    [int]$Scale = 2,
+    [int]$Border = 20,
+    [switch]$KeepSvg
+)
 
 $ErrorActionPreference = "Stop"
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-$ProjectDir = Split-Path -Parent $PSScriptRoot
-$InputDir = Join-Path $ProjectDir "docs\document\diagrams\drawio-common"
-$OutputDir = Join-Path $ProjectDir "docs\document\diagrams\drawio-export"
-
-# Tìm draw.io desktop
-$DrawioPaths = @(
-  "C:\Program Files\draw.io\draw.io.exe",
-  "$env:LOCALAPPDATA\Programs\draw.io\draw.io.exe",
-  "$env:ProgramFiles\draw.io\draw.io.exe"
-)
-$Drawio = $DrawioPaths | Where-Object { Test-Path $_ } | Select-Object -First 1
-
-if (-not $Drawio) {
-  Write-Host "[Render] Khong tim thay draw.io desktop. Cai bang:" -ForegroundColor Red
-  Write-Host "  winget install JGraph.Draw" -ForegroundColor Yellow
-  exit 1
+# Kiểm tra Node.js
+if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
+    Write-Error "Node.js không được cài đặt. Cần Node.js >= 18: https://nodejs.org"
+    exit 1
 }
 
-if (-not (Test-Path $OutputDir)) {
-  New-Item -ItemType Directory -Path $OutputDir | Out-Null
+# Đường dẫn project
+$projectRoot = Split-Path $PSScriptRoot -Parent
+$scriptPath = Join-Path $projectRoot "tools\render-diagrams.mjs"
+
+if (-not (Test-Path $scriptPath)) {
+    Write-Error "Không tìm thấy: $scriptPath"
+    exit 1
 }
 
-Write-Host "[Render] Su dung: $Drawio" -ForegroundColor Cyan
-Write-Host "[Render] Input:   $InputDir" -ForegroundColor Cyan
-Write-Host "[Render] Output:  $OutputDir" -ForegroundColor Cyan
-Write-Host ""
-
-$Files = Get-ChildItem -Path $InputDir -Filter "*.drawio"
-$Total = $Files.Count
-$Counter = 0
-
-foreach ($File in $Files) {
-  $Counter++
-  $OutputFile = Join-Path $OutputDir ($File.BaseName + ".png")
-  Write-Host "  [$Counter/$Total] $($File.Name)" -ForegroundColor Gray
-
-  & $Drawio --export --format png --scale 2 --crop --border 20 --output $OutputFile $File.FullName 2>&1 | Out-Null
-
-  if (Test-Path $OutputFile) {
-    Write-Host "         OK $($OutputFile)" -ForegroundColor Green
-  } else {
-    Write-Host "         FAIL" -ForegroundColor Red
-  }
+# Kiểm tra puppeteer đã cài chưa
+$nodeModules = Join-Path $projectRoot "node_modules\puppeteer"
+if (-not (Test-Path $nodeModules)) {
+    Write-Host "Cài đặt puppeteer..." -ForegroundColor Yellow
+    Push-Location $projectRoot
+    try { npm install puppeteer } finally { Pop-Location }
 }
 
-Write-Host ""
-Write-Host "[Render] Hoan tat: $Counter file" -ForegroundColor Green
+# Build args
+$nodeArgs = @($scriptPath)
+if ($File)    { $nodeArgs += $File }
+if ($KeepSvg) { $nodeArgs += "--keep-svg" }
+if ($Scale -ne 2)   { $nodeArgs += @("--scale", $Scale) }
+if ($Border -ne 20) { $nodeArgs += @("--border", $Border) }
+
+# Chạy
+Push-Location $projectRoot
+try {
+    & node @nodeArgs
+    exit $LASTEXITCODE
+} finally {
+    Pop-Location
+}

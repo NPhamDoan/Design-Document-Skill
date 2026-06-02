@@ -1,4 +1,4 @@
----
+﻿---
 name: design-doc
 description: Tạo tài liệu thiết kế hệ thống (Software Design Document) cho đồ án sinh viên với draw.io diagrams + Word docx. Workflow 7 phần theo chuẩn + 12 loại diagram. Tự động render PNG và generate file Word.
 ---

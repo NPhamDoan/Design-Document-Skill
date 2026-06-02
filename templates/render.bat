@@ -1,32 +1,40 @@
 @echo off
-REM Render tất cả file .drawio sang PNG bằng draw.io desktop CLI
-REM Yêu cầu: cài draw.io desktop (winget install JGraph.Draw)
+REM Wrapper goi tools/render-diagrams.mjs
+REM Pipeline: drawio CLI -> SVG -> Puppeteer -> PNG
+REM
+REM Cach dung:
+REM   scripts\render.bat                    -> render toan bo
+REM   scripts\render.bat 07b                -> filter theo ten file
+REM   scripts\render.bat 07b --keep-svg     -> giu lai SVG
+REM   scripts\render.bat 07b --scale 3      -> PNG x3
+REM   scripts\render.bat 07b --border 30    -> padding 30px
 
 setlocal
-set "PROJECT_DIR=%~dp0.."
-set "INPUT_DIR=%PROJECT_DIR%\docs\document\diagrams\drawio-common"
-set "OUTPUT_DIR=%PROJECT_DIR%\docs\document\diagrams\drawio-export"
-set "DRAWIO=C:\Program Files\draw.io\draw.io.exe"
 
-if not exist "%DRAWIO%" (
-  echo [Render] Khong tim thay draw.io desktop tai: %DRAWIO%
-  echo Cai bang lenh: winget install JGraph.Draw
-  exit /b 1
+where node >nul 2>&1
+if errorlevel 1 (
+    echo [ERROR] Node.js khong duoc cai dat. Can Node.js ^>= 18: https://nodejs.org
+    exit /b 1
 )
 
-if not exist "%OUTPUT_DIR%" (
-  mkdir "%OUTPUT_DIR%"
+set "PROJECT_ROOT=%~dp0.."
+set "SCRIPT=%PROJECT_ROOT%\tools\render-diagrams.mjs"
+
+if not exist "%SCRIPT%" (
+    echo [ERROR] Khong tim thay: %SCRIPT%
+    exit /b 1
 )
 
-echo [Render] Dang render PNG tu %INPUT_DIR%
-echo [Render] Output: %OUTPUT_DIR%
-echo.
-
-for %%f in ("%INPUT_DIR%\*.drawio") do (
-  echo   - %%~nxf
-  "%DRAWIO%" --export --format png --scale 2 --crop --border 20 --output "%OUTPUT_DIR%\%%~nf.png" "%%f"
+if not exist "%PROJECT_ROOT%\node_modules\puppeteer" (
+    echo Cai dat puppeteer...
+    pushd "%PROJECT_ROOT%"
+    call npm install puppeteer
+    popd
 )
 
-echo.
-echo [Render] Hoan tat!
-endlocal
+pushd "%PROJECT_ROOT%"
+node "%SCRIPT%" %*
+set EXITCODE=%ERRORLEVEL%
+popd
+
+exit /b %EXITCODE%

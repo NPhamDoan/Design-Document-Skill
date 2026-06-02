@@ -1,4 +1,4 @@
-# Best Practices và Lessons Learned về drawio
+﻿# Best Practices và Lessons Learned về drawio
 
 Tổng hợp kinh nghiệm khi dùng draw.io desktop CLI để export PNG cho documents.
 

@@ -1,55 +1,33 @@
-#!/bin/bash
-# Render tất cả file .drawio sang PNG bằng draw.io desktop CLI
-# Yêu cầu: cài draw.io desktop
-#   macOS:  brew install --cask drawio
-#   Linux:  https://github.com/jgraph/drawio-desktop/releases
+#!/usr/bin/env bash
+# Wrapper gọi tools/render-diagrams.mjs
+# Pipeline: drawio CLI -> SVG -> Puppeteer -> PNG
+#
+# Cách dùng:
+#   ./scripts/render.sh                       # render toàn bộ
+#   ./scripts/render.sh 07b                   # filter theo tên file
+#   ./scripts/render.sh 07b --keep-svg        # giữ lại SVG
+#   ./scripts/render.sh 07b --scale 3         # PNG x3
+#   ./scripts/render.sh 07b --border 30       # padding 30px
 
-set -e
+set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-INPUT_DIR="$PROJECT_DIR/docs/document/diagrams/drawio-common"
-OUTPUT_DIR="$PROJECT_DIR/docs/document/diagrams/drawio-export"
-
-# Tìm drawio
-if command -v drawio >/dev/null 2>&1; then
-  DRAWIO="drawio"
-elif [ -x "/Applications/draw.io.app/Contents/MacOS/draw.io" ]; then
-  DRAWIO="/Applications/draw.io.app/Contents/MacOS/draw.io"
-elif [ -x "/usr/local/bin/drawio" ]; then
-  DRAWIO="/usr/local/bin/drawio"
-else
-  echo "[Render] Khong tim thay draw.io desktop"
-  echo "  macOS:  brew install --cask drawio"
-  echo "  Linux:  https://github.com/jgraph/drawio-desktop/releases"
-  exit 1
+if ! command -v node >/dev/null 2>&1; then
+    echo "[ERROR] Node.js không được cài đặt. Cần Node.js >= 18: https://nodejs.org" >&2
+    exit 1
 fi
 
-mkdir -p "$OUTPUT_DIR"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SCRIPT="$PROJECT_ROOT/tools/render-diagrams.mjs"
 
-echo "[Render] Su dung: $DRAWIO"
-echo "[Render] Input:   $INPUT_DIR"
-echo "[Render] Output:  $OUTPUT_DIR"
-echo ""
+if [[ ! -f "$SCRIPT" ]]; then
+    echo "[ERROR] Không tìm thấy: $SCRIPT" >&2
+    exit 1
+fi
 
-COUNTER=0
-TOTAL=$(ls -1 "$INPUT_DIR"/*.drawio 2>/dev/null | wc -l)
+if [[ ! -d "$PROJECT_ROOT/node_modules/puppeteer" ]]; then
+    echo "Cài đặt puppeteer..."
+    (cd "$PROJECT_ROOT" && npm install puppeteer)
+fi
 
-for f in "$INPUT_DIR"/*.drawio; do
-  [ -e "$f" ] || continue
-  COUNTER=$((COUNTER + 1))
-  basename_no_ext="$(basename "$f" .drawio)"
-  output="$OUTPUT_DIR/${basename_no_ext}.png"
-  echo "  [$COUNTER/$TOTAL] $(basename "$f")"
-
-  "$DRAWIO" --export --format png --scale 2 --crop --border 20 --output "$output" "$f" >/dev/null 2>&1 || true
-
-  if [ -f "$output" ]; then
-    echo "         OK"
-  else
-    echo "         FAIL"
-  fi
-done
-
-echo ""
-echo "[Render] Hoan tat: $COUNTER file"
+cd "$PROJECT_ROOT"
+node "$SCRIPT" "$@"
