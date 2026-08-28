@@ -2,6 +2,33 @@
 
 Tham khảo theo Software Design Document chuẩn cho đồ án sinh viên.
 
+> **Ánh xạ chuẩn IEEE 1016-2009 (Software Design Description):** cấu trúc 7 phần dưới đây phủ các
+> *design viewpoint* của IEEE 1016. Ánh xạ + các mục BỔ SUNG để phủ đủ chuẩn:
+>
+> | Viewpoint (IEEE 1016) | Nằm ở phần |
+> |---|---|
+> | Context | 1.3, 2.1 |
+> | Composition / Structure | 4.3, 5.1 |
+> | Logical | 6.1 (class) |
+> | Dependency | 5.1-B (interface/coupling) |
+> | Information | 2.3, 5.3, 6.4 |
+> | Interface | 3.3 (UI), 5.2 (API) |
+> | Interaction | 6.2 (sequence) |
+> | State dynamics | 6.x (state) |
+> | **Patterns use** | 5.5 (bổ sung) |
+> | **Algorithm** | 6.5 (bổ sung) |
+> | **Resource** | 4.4 (bổ sung) |
+>
+> Bắt buộc kèm: **Phần 0 Định danh + Lịch sử thay đổi + Tài liệu tham khảo + Thuật ngữ**,
+> **Stakeholders & mối quan tâm** (1.2), **Design rationale** (4.3-B, để BẮT BUỘC).
+
+## PHẦN 0: ĐỊNH DANH TÀI LIỆU (SDD Identification — IEEE 1016)
+- Tên tài liệu, tên dự án, phiên bản, ngày ban hành, tác giả, trạng thái.
+- **Lịch sử thay đổi** (bảng: phiên bản / ngày / người sửa / mô tả thay đổi).
+- **Tài liệu tham khảo** (SRS, chuẩn áp dụng, tài liệu liên quan).
+- **Thuật ngữ & viết tắt** (glossary).
+- Mục lục.
+
 ## PHẦN 1: TẦM NHÌN VÀ BỐI CẢNH (Project Vision & Context)
 
 ### 1.1 Tầm nhìn dự án (DOC 1.1-A: Project Vision Document)
@@ -11,7 +38,9 @@ Tham khảo theo Software Design Document chuẩn cho đồ án sinh viên.
 
 ### 1.2 Người dùng và các bên liên quan
 - DOC 1.2-A: User Personas Document (2-3 personas điển hình)
-- DOC 1.2-B: Stakeholder Register (ai liên quan, vai trò gì)
+- DOC 1.2-B: Stakeholder Register + **mối quan tâm thiết kế** (design concerns)
+  - Bảng: bên liên quan / vai trò / **mối quan tâm** (điều họ cần đảm bảo ở thiết kế)
+  - IEEE 1016 yêu cầu nêu rõ concerns để các design view giải quyết chúng
 
 ### 1.3 Bối cảnh hệ thống (DOC 1.3-A: System Context Diagram)
 - **Diagram**: Context diagram (`01-context-diagram.drawio`)
@@ -86,9 +115,16 @@ Bảng công nghệ với:
 - DOC 4.3-A: System Architecture Diagram (`06-architecture.drawio`)
   - Phân tier: Client / Gateway / Service / Data
   - Bảng mô tả: tier, thành phần, vai trò
-- DOC 4.3-B: ADRs (Architecture Decision Records) — TÙY CHỌN
+- DOC 4.3-B: ADRs (Architecture Decision Records) — **Design Rationale (IEEE 1016, BẮT BUỘC)**
   - 3-5 quyết định kiến trúc quan trọng
-  - Format: Context / Decision / Consequences
+  - Format: Context / Decision / Consequences (vì sao chọn, đánh đổi, phương án loại bỏ)
+
+### 4.4 Tài nguyên & hiệu năng (DOC 4.4-A: Resource viewpoint — IEEE 1016)
+Bảng ngân sách tài nguyên (giúp đánh giá khả thi vận hành):
+- Bộ nhớ (RAM cho model/cache), CPU/GPU
+- Luồng/đồng thời (thread, worker, connection pool)
+- Ngân sách thời gian/độ trễ mỗi thao tác chính
+- Giới hạn ngoài (quota API, rate limit, kích thước file)
 
 ## PHẦN 5: KIẾN TRÚC COMPONENT & DỮ LIỆU (Component & Data Architecture)
 
@@ -124,6 +160,12 @@ Bảng status codes: 200, 201, 400, 401, 403, 404, 409, 500
 - Input validation
 - HTTPS, CORS
 
+### 5.5 Mẫu thiết kế (DOC 5.5-A: Design Patterns — Patterns use viewpoint, IEEE 1016)
+Bảng các mẫu thiết kế áp dụng:
+- Tên mẫu (Strategy, Factory, Repository, Pipeline, Adapter...)
+- Nơi áp dụng trong hệ thống
+- Vấn đề mẫu giải quyết
+
 ## PHẦN 6: THIẾT KẾ CHI TIẾT (Detailed Design - LLD)
 
 ### 6.1 Thiết kế Lớp (DOC 6.1-A: Detailed Class Diagrams)
@@ -152,6 +194,12 @@ Cho MỖI bảng (10 bảng nếu là project quản lý điển hình):
 ### State Diagram (nếu có entity với lifecycle)
 - `12-state-<entity>.drawio` — sơ đồ trạng thái cho entity chính (HoSo, Order, Ticket...)
 - Bảng mô tả trạng thái: tên, ý nghĩa, transitions
+
+### 6.5 Thiết kế thuật toán (DOC 6.5-A: Algorithm viewpoint — IEEE 1016)
+Cho các xử lý cốt lõi (không hiển nhiên) — mô tả bằng pseudocode/các bước + độ phức tạp:
+- Thuật toán chính (vd xếp hạng/tìm kiếm, hợp nhất, tính toán nghiệp vụ)
+- Tham số + điều kiện biên
+- Độ phức tạp / lưu ý hiệu năng
 
 ## PHẦN 7: TRIỂN KHAI & TEST (Implementation & Testing)
 

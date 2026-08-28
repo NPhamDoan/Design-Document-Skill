@@ -1,4 +1,4 @@
-﻿---
+---
 name: design-doc
 description: Tạo tài liệu thiết kế hệ thống (Software Design Document) cho đồ án sinh viên với draw.io diagrams + Word docx. Workflow 7 phần theo chuẩn + 12 loại diagram. Tự động render PNG và generate file Word.
 ---
@@ -124,6 +124,20 @@ Chạy:
 node tools/generate-docx.mjs
 ```
 
+**Hai cách sinh .docx — chọn theo dạng nguồn:**
+
+| Nguồn tài liệu | Công cụ | Khi dùng |
+|---|---|---|
+| Nội dung dựng bằng code (mảng section/text trong script) | `generate-docx.template.mjs` (Node) | Làm mới từ đầu theo skill; kiểm soát trang bìa/mục lục chi tiết |
+| Tài liệu ĐÃ viết sẵn ở dạng Markdown (heading + bảng + `![](png)`) | `md-to-docx.py` (Python, python-docx) | Đã có 1 file `.md` hoàn chỉnh, chỉ cần xuất `.docx`; không cần/không có pandoc |
+
+`md-to-docx.py` parse thẳng Markdown → docx: heading, đoạn văn, **đậm**/`code`, danh sách, bảng, ảnh (nhúng + co theo lề, đường dẫn tính tương đối theo file `.md`), blockquote, code block. Chạy:
+```powershell
+pip install python-docx Pillow
+python templates/md-to-docx.py docs/design/tai-lieu.md docs/design/tai-lieu.docx
+```
+Cần `Pillow` để co ảnh đúng tỉ lệ (thiếu vẫn chạy nhưng chỉ co theo bề rộng). Kiểm tra nhanh sau khi tạo: `python -c "from docx import Document; d=Document('out.docx'); print(len(d.tables),'bảng',len(d.inline_shapes),'ảnh')"`.
+
 ## 12 loại diagram (theo design_content.md)
 
 | # | File | Loại | Mục document |
@@ -163,15 +177,17 @@ Vì là báo cáo sinh viên đệ trình hội đồng:
 ## Templates
 
 Các file template trong `templates/`:
-- `generate-docx.template.mjs` - Skeleton Node.js script tạo file .docx (dùng package `docx`)
+- `generate-docx.template.mjs` - Skeleton Node.js script tạo file .docx (dùng package `docx`), dựng nội dung bằng code
+- `md-to-docx.py` - Chuyển thẳng tài liệu Markdown (heading + bảng + ảnh) sang .docx bằng python-docx; dùng khi đã có file `.md` hoàn chỉnh
 - `render.bat`, `render.ps1`, `render.sh` - Scripts render diagrams (đã có flag `--crop --border 20`)
 - `diagrams/*.drawio` - Sample diagrams (copy + modify)
 
 ## Lưu ý quan trọng
 
-- **draw.io desktop phải cài sẵn** trên máy. Windows: `winget install JGraph.Draw`. macOS: `brew install --cask drawio`.
+- **Cần draw.io** trên máy: bản desktop (`winget install JGraph.Draw`, macOS `brew install --cask drawio`) HOẶC bản Microsoft Store. Script render tự dò cả hai (xem `reference/diagram-patterns.md` mục "Phát hiện draw.io khi render"). Lưu ý bản Store không tạo lệnh `drawio` trên PATH nên `where drawio` rỗng dù đã cài; phải quét `C:\Program Files\WindowsApps\draw.io.draw.ioDiagrams*\app\draw.io.exe`.
 - **Node.js >=18** để chạy script generate-docx.mjs
 - **NPM package `docx`** sẽ được install tự động khi chạy lần đầu (npm install docx)
+- **Nếu dùng `md-to-docx.py`**: cần `python-docx` (bắt buộc) và `Pillow` (khuyến nghị, để co ảnh đúng tỉ lệ theo cả bề rộng lẫn chiều cao). Không cần Node hay pandoc.
 - **PNG bị cắt nội dung là dấu hiệu render thiếu flag `--crop`**, không phải lỗi page size. Luôn dùng `--crop --border 20`.
 
 ## Tips troubleshooting
@@ -186,3 +202,4 @@ Các file template trong `templates/`:
 | Crow's foot không hiện | Dùng arrow style sai | Dùng `startArrow=ERmandOne;endArrow=ERmany` |
 | Diagram dính nhau | Layer boundary boxes lồng nhau | Bỏ container, dùng layer label text bên cạnh |
 | Element là child của swimlane bị crop | Tọa độ relative | Move ra `parent="1"`, convert tọa độ tuyệt đối |
+

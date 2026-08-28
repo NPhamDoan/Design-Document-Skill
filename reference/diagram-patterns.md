@@ -174,7 +174,63 @@ drawio CLI mới (>= v22) không cần `Start-Sleep`. Nếu render hàng loạt 
 [xml]$doc = Get-Content path/to/file.drawio
 ```
 
-## 13. Checklist trước khi finalize
+## 13. Sequence diagram (lifeline + message toạ độ tường minh)
+
+Cách vẽ sequence ổn định nhất khi export CLI: dùng `umlLifeline` cho participant và vẽ
+message bằng **edge toạ độ tường minh** (không nối vào cell), để kiểm soát chính xác vị trí y.
+
+**Participant / lifeline** (actor thêm `participant=umlActor`):
+```xml
+<mxCell id="ll_qp" value="Xử lý hỏi-đáp"
+  style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Segoe UI;"
+  vertex="1" parent="1">
+  <mxGeometry x="380" y="30" width="120" height="550" as="geometry"/>
+</mxCell>
+```
+- `container=0` để không cần bỏ message vào trong lifeline (tránh crop child).
+- Tất cả lifeline cùng `y` và cùng `height`; center của lifeline = `x + width/2`.
+
+**Message** = edge với `sourcePoint`/`targetPoint` cố định (x = center lifeline, y = mốc thời gian):
+```xml
+<mxCell id="m3" value="sinh vector câu hỏi"
+  style="html=1;endArrow=block;endFill=1;startArrow=none;verticalAlign=bottom;fontFamily=Segoe UI;"
+  edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="440" y="180" as="sourcePoint"/>
+    <mxPoint x="610" y="180" as="targetPoint"/>
+  </mxGeometry>
+</mxCell>
+```
+- Return message: `endArrow=open;dashed=1;endFill=0`.
+- Self-message: source và target cùng center, thêm `<Array as="points">` 2 điểm lệch phải để tạo vòng.
+- `verticalAlign=bottom` để nhãn nằm trên đường.
+
+**Combined fragment (alt/opt/loop)** = `umlFrame` (nhãn ở góc trái) + đường kẻ ngăn dashed:
+```xml
+<mxCell id="altf" value="alt  [đúng / sai]"
+  style="shape=umlFrame;whiteSpace=wrap;html=1;width=110;height=26;fillColor=none;strokeColor=#999999;fontStyle=2;verticalAlign=top;align=left;fontFamily=Segoe UI;"
+  vertex="1" parent="1"><mxGeometry x="240" y="225" width="380" height="165" as="geometry"/></mxCell>
+<!-- divider giữa 2 nhánh -->
+<mxCell id="divider" style="endArrow=none;dashed=1;html=1;strokeColor=#999999;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry"><mxPoint x="240" y="332" as="sourcePoint"/><mxPoint x="620" y="332" as="targetPoint"/></mxGeometry></mxCell>
+```
+
+## 14. Box-text thay UML class/ERD shape (tránh crop hoàn toàn)
+
+Với class diagram và ERD, thay vì swimlane/stack-layout (dễ bị crop khi export), có thể vẽ
+mỗi lớp/thực thể bằng **một mxCell box** chứa tiêu đề + danh sách trường qua `&#10;` (newline),
+căn trái trên:
+```xml
+<mxCell id="store" value="&lt;b&gt;VectorStore&lt;/b&gt;&#10;──────────────&#10;+ vector_search(vector, k)&#10;+ add_chunks(chunks, vectors)"
+  style="verticalAlign=top;align=left;overflow=hidden;html=1;whiteSpace=wrap;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;spacingLeft=8;spacingTop=6;fontFamily=Segoe UI;"
+  vertex="1" parent="1"><mxGeometry x="440" y="440" width="250" height="110" as="geometry"/></mxCell>
+```
+- Dùng `──────────────` làm đường ngăn tiêu đề ↔ thành viên (render ổn định hơn `<hr>`).
+- Generalization (kế thừa): edge `endArrow=block;endFill=0` (tam giác rỗng), source = lớp con.
+- Interface: ghi `«interface»` trong tiêu đề.
+- Datastore: `shape=cylinder3;boundedLbl=1;backgroundOutline=1;size=14` render đẹp cho ChromaDB/DB.
+
+## 15. Checklist trước khi finalize
 
 - [ ] Tất cả mxCell có `parent="1"`
 - [ ] Render command có flag `--crop --border 20`
@@ -184,3 +240,20 @@ drawio CLI mới (>= v22) không cần `Start-Sleep`. Nếu render hàng loạt 
 - [ ] Có legend nếu diagram complex (>10 elements)
 - [ ] Tiếng Việt có dấu đầy đủ
 - [ ] Mở PNG xem tất cả 4 cạnh có đủ content không (đặc biệt sequence, ERD)
+
+## Phát hiện draw.io khi render (Windows)
+
+`tools/render-diagrams.mjs` (hàm `findDrawio`) tự dò draw.io theo thứ tự sau. Khi kiểm tra thủ công cũng nên theo đúng thứ tự này, đừng kết luận thiếu draw.io quá sớm:
+
+1. Bản desktop:
+   - `C:\Program Files\draw.io\draw.io.exe`
+   - `C:\Program Files (x86)\draw.io\draw.io.exe`
+   - `%LOCALAPPDATA%\Programs\draw.io\draw.io.exe`
+2. Bản Microsoft Store (UWP): quét `C:\Program Files\WindowsApps\` tìm thư mục bắt đầu bằng `draw.io.draw.ioDiagrams`, dùng `...\app\draw.io.exe`.
+3. Lệnh trên PATH: `where drawio` (Windows) / `which drawio` (macOS, Linux), thử cả `draw.io`.
+4. macOS/Linux: `/Applications/draw.io.app/Contents/MacOS/draw.io`, `/usr/bin/drawio`, `/usr/local/bin/drawio`, `/snap/bin/drawio`.
+
+Lưu ý quan trọng:
+- Bản cài từ Microsoft Store KHÔNG tạo lệnh `drawio` trên PATH, nên `where drawio` trả về rỗng dù draw.io đã có. Phải quét thêm `WindowsApps`.
+- Thư mục `WindowsApps` thường cần quyền cao để liệt kê; bọc trong try/catch và bỏ qua nếu lỗi. Tuy vậy file `draw.io.exe` bên trong vẫn chạy `--export` bình thường khi gọi bằng đường dẫn đầy đủ.
+- Cách lấy nhanh đường dẫn bản Store: `Get-AppxPackage *draw.io* | Select InstallLocation` rồi nối thêm `app\draw.io.exe`.
