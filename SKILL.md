@@ -1,4 +1,4 @@
----
+﻿---
 name: design-doc
 description: Tạo tài liệu thiết kế hệ thống (Software Design Document) cho đồ án sinh viên với draw.io diagrams + Word docx. Workflow 7 phần theo chuẩn + 12 loại diagram. Tự động render PNG và generate file Word.
 ---
@@ -81,6 +81,8 @@ Dùng cấu trúc 7 phần (xem `reference/design-structure.md`):
 7. **Triển khai & Test** - WBS, error handling, risk register
 
 Mỗi diagram phải có **bảng mô tả đi kèm** (mỗi row = 1 element trong diagram).
+
+**QUY TẮC ĐỘ ĐẦY ĐỦ (bắt buộc — chi tiết ở reference/design-structure.md):** phần MÔ TẢ/ĐẶC TẢ bằng chữ và bảng phải phủ ĐẦY ĐỦ, không rút gọn "vài mục tiêu biểu": đặc tả HẾT mọi use case (không chỉ 2-3), liệt kê HẾT yêu cầu chức năng, đặc tả HẾT mọi bảng CSDL, phủ HẾT module/lớp chính. Giới hạn "2-3"/"một vài" CHỈ áp dụng cho SỐ DIAGRAM vẽ ra, KHÔNG áp dụng cho phần chữ/bảng. Nhóm phần tử cùng dạng vẫn tách từng mục (được viết gọn + tham chiếu "tương tự X") nhưng KHÔNG bỏ sót.
 
 ### Bước 3: Tạo diagrams
 

@@ -1,6 +1,17 @@
-# Cấu trúc tài liệu thiết kế (7 phần)
+﻿# Cấu trúc tài liệu thiết kế (7 phần)
 
 Tham khảo theo Software Design Document chuẩn cho đồ án sinh viên.
+
+> ## NGUYÊN TẮC ĐỘ ĐẦY ĐỦ (đọc trước khi viết tài liệu)
+>
+> Tài liệu phải ĐẦY ĐỦ, không rút gọn kiểu "làm vài mục tiêu biểu":
+> - Use case (2.1-B): đặc tả HẾT mọi UC, không chỉ 2-3.
+> - Yêu cầu chức năng (3.1): liệt kê HẾT (FR-01..FR-N).
+> - Từ điển dữ liệu (6.4): đặc tả HẾT mọi bảng, đủ cột từng bảng.
+> - Component/class (5.1, 6.1): phủ HẾT module/lớp chính.
+> - Nhóm phần tử cùng dạng: vẫn tách từng mục, được viết gọn + tham chiếu "tương tự X", nhưng KHÔNG bỏ sót.
+> - Giới hạn "2-3"/"một vài" CHỈ áp dụng cho SỐ DIAGRAM vẽ ra (tiết kiệm công render), KHÔNG áp dụng cho phần chữ/bảng.
+> - Người dùng yêu cầu trọng tâm chủ đề nào thì viết chủ đề đó SÂU hơn, nhưng vẫn giữ ĐẦY ĐỦ các mục còn lại.
 
 > **Ánh xạ chuẩn IEEE 1016-2009 (Software Design Description):** cấu trúc 7 phần dưới đây phủ các
 > *design viewpoint* của IEEE 1016. Ánh xạ + các mục BỔ SUNG để phủ đủ chuẩn:
@@ -53,13 +64,13 @@ Tham khảo theo Software Design Document chuẩn cho đồ án sinh viên.
   - Actors: tất cả người dùng
   - Use cases: tất cả chức năng chính (UC-01 đến UC-N)
   - Quan hệ include / extend
-- DOC 2.1-B: Use Case Specifications (chi tiết 2-3 UC quan trọng nhất)
+- DOC 2.1-B: Use Case Specifications — ĐẶC TẢ ĐẦY ĐỦ TẤT CẢ use case (UC-01..UC-N), KHÔNG chỉ 2-3 UC. Mỗi UC có mục riêng; UC dạng CRUD giống nhau được viết gọn + tham chiếu "tương tự UC-X" nhưng KHÔNG bỏ sót
   - Actor, mô tả, điều kiện trước/sau
   - Luồng chính (numbered steps)
   - Luồng phụ (alternative flows)
 
 ### 2.2 Sơ đồ quy trình (DOC 2.2-A: Process Flow Diagrams)
-- Activity diagrams cho 2-3 luồng nghiệp vụ chính
+- Activity diagrams cho TẤT CẢ luồng nghiệp vụ chính (phần mô tả bằng bảng phủ đầy đủ; số diagram vẽ ra có thể giới hạn ở luồng tiêu biểu)
 - Mỗi diagram: 2 swimlanes (User / Backend)
 - Bảng mô tả: bước, lane, hành động, ghi chú
 
@@ -188,7 +199,7 @@ Mỗi diagram có bảng mô tả messages: từ ai → đến ai → message �
 Bỏ qua nếu không có Figma mockups
 
 ### 6.4 Chi tiết CSDL (DOC 6.4-A: Complete Data Dictionary)
-Cho MỖI bảng (10 bảng nếu là project quản lý điển hình):
+BẮT BUỘC đặc tả TẤT CẢ bảng trong CSDL (không bỏ sót, không rút gọn "vài bảng tiêu biểu"); số bảng đúng theo lược đồ thực tế. Cho MỖI bảng:
 - Bảng cột với: tên cột, kiểu dữ liệu, ràng buộc (PK, FK, UNIQUE, NOT NULL, CHECK), mô tả nghiệp vụ
 
 ### State Diagram (nếu có entity với lifecycle)
