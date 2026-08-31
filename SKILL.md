@@ -1,11 +1,13 @@
 ﻿---
 name: design-doc
-description: Tạo tài liệu thiết kế hệ thống (Software Design Document) cho đồ án sinh viên với draw.io diagrams + Word docx. Workflow 7 phần theo chuẩn + 12 loại diagram. Tự động render PNG và generate file Word.
+description: Tạo tài liệu thiết kế hệ thống (Software Design Document / Báo cáo đồ án Kỹ thuật phần mềm) tiếng Việt với draw.io diagrams + Word docx. Cấu trúc 17 chương + phụ lục theo chuẩn IEEE 1016, đầy đủ không giới hạn số lượng. Tự động render PNG và generate file Word.
 ---
 
 # /design-doc
 
-Skill giúp tạo Software Design Document cho project, kết quả là 1 file Word (.docx) hoàn chỉnh với diagrams nhúng + bảng mô tả.
+Skill giúp tạo Software Design Document (Báo cáo đồ án Kỹ thuật phần mềm) cho project, kết quả là 1 file Word (.docx) hoàn chỉnh với diagrams nhúng + bảng mô tả, theo **cấu trúc 17 chương + phụ lục A-G** (chuẩn IEEE 1016).
+
+**NGUYÊN TẮC ĐẦY ĐỦ, KHÔNG GIỚI HẠN:** phủ mọi chương/mục; mục không áp dụng thì ghi rõ "Không áp dụng — lý do", không bỏ trống. Làm theo số lượng THỰC TẾ của dự án (tất cả use case, tất cả API, tất cả bảng dữ liệu, tất cả lớp, tất cả luồng chính). Chi tiết: `reference/design-structure.md`.
 
 ## Khi nào dùng skill này
 
@@ -19,9 +21,9 @@ Kích hoạt khi user yêu cầu:
 ## Output
 
 Sau khi chạy đầy đủ workflow:
-- 12+ file `.drawio` source diagrams
-- 12+ file `.png` exported (chạy được script `render`)
-- 1 file `.docx` Word document với 7 phần đầy đủ
+- 13+ file `.drawio` source diagrams (tăng theo số luồng/entity thực tế)
+- 13+ file `.png` exported (chạy được script `render`)
+- 1 file `.docx` Word document theo **17 chương + phụ lục** đầy đủ (tiếng Việt)
 
 ## Cấu trúc thư mục output
 
@@ -32,18 +34,17 @@ docs/document/
     ├── drawio-common/
     │   ├── 01-context-diagram.drawio
     │   ├── 02-usecase.drawio
-    │   ├── 03-activity-<flow1>.drawio
-    │   ├── 04-activity-<flow2>.drawio
-    │   ├── 05-erd-conceptual.drawio
-    │   ├── 06-architecture.drawio
-    │   ├── 07-class-diagram.drawio
-    │   ├── 07a-class-diagram-<main>.drawio
-    │   ├── 07b-component-diagram.drawio
-    │   ├── 08-erd-physical.drawio
-    │   ├── 09-sequence-<flow1>.drawio
-    │   ├── 10-sequence-<auth>.drawio
-    │   ├── 11-sequence-<flow2>.drawio
-    │   └── 12-state-<entity>.drawio
+    │   ├── 03-domain-model.drawio
+    │   ├── 04-analysis-class.drawio
+    │   ├── 05-activity-<flow>.drawio        # mỗi luồng chính 1 file
+    │   ├── 06-ssd-<uc>.drawio               # system sequence diagram
+    │   ├── 07-architecture.drawio
+    │   ├── 08-component.drawio
+    │   ├── 09-design-class.drawio
+    │   ├── 10-sequence-<uc>.drawio          # mỗi UC chính 1 file
+    │   ├── 11-state-<entity>.drawio         # mỗi entity có vòng đời 1 file
+    │   ├── 12-erd.drawio
+    │   └── 13-deployment.drawio
     └── drawio-export/
 
 tools/
@@ -70,17 +71,28 @@ Output: file `design-context.md` ở `docs/document/` ghi tóm tắt.
 
 ### Bước 2: Thiết kế cấu trúc tài liệu
 
-Dùng cấu trúc 7 phần (xem `reference/design-structure.md`):
+Dùng cấu trúc **17 chương + phụ lục A-G** (chi tiết đầy đủ ở `reference/design-structure.md`, khớp mẫu tiếng Việt "BÁO CÁO ĐỒ ÁN KỸ THUẬT PHẦN MỀM"):
 
-1. **Tầm nhìn và bối cảnh** - Mục tiêu, user, context diagram
-2. **Mô hình nghiệp vụ** - Use case, activity, conceptual ERD
-3. **Đặc tả yêu cầu** - Functional + non-functional, MoSCoW priority
-4. **Kiến trúc tổng thể** - Architectural drivers, tech stack, system architecture
-5. **Component & Data** - Component diagram, API spec, physical ERD, security
-6. **Thiết kế chi tiết** - Class diagram, sequence diagram, state diagram, data dictionary
-7. **Triển khai & Test** - WBS, error handling, risk register
+1. Giới thiệu (bối cảnh, bài toán, mục tiêu, phạm vi, bên liên quan, thuật ngữ)
+2. Tổng quan hệ thống (góc nhìn sản phẩm, context diagram, chức năng, công nghệ)
+3. Đặc tả yêu cầu (FR + đặc tả từng FR, NFR, business rule, ràng buộc, giả định)
+4. Phân tích Use Case (actor, use case diagram, danh sách + **đặc tả TẤT CẢ UC**)
+5. Phân tích hệ thống (domain model, lớp phân tích, activity mọi luồng, SSD)
+6. Kiến trúc phần mềm (mẫu kiến trúc + lý do, architecture diagram, tầng, component, module)
+7. Thiết kế chi tiết (design class, đặc tả TẤT CẢ lớp, interface, design pattern, sequence, state)
+8. Thiết kế dữ liệu (ERD, lược đồ TẤT CẢ bảng, từ điển dữ liệu, validation)
+9. Thiết kế giao diện (UI, **TẤT CẢ API**, giao diện ngoài)
+10. Thiết kế chất lượng & bảo mật (hiệu năng, mở rộng, tin cậy, bảo trì, bảo mật, kiểm thử)
+11. Xử lý lỗi & log (chiến lược lỗi, validation, mã lỗi, logging)
+12. Triển khai (môi trường, cấu trúc mã, hiện thực quan trọng + thuật toán cốt lõi, design pattern)
+13. Kiểm thử (chiến lược, unit/integration/system, test case, tổng kết)
+14. Thiết kế triển khai (deployment diagram, môi trường, quy trình)
+15. Ma trận truy vết (FR→UC→analysis→design→code→test)
+16. Quyết định & đánh giá thiết kế (phương án, lựa chọn, lý do, đánh đổi, hạn chế, hướng phát triển)
+17. Kết luận (tổng kết, mức đạt mục tiêu, bài học)
++ Tài liệu tham khảo + Phụ lục A-G (use case/UML/API/DB/test/UI/mã nguồn đầy đủ)
 
-Mỗi diagram phải có **bảng mô tả đi kèm** (mỗi row = 1 element trong diagram).
+Mỗi diagram phải có **bảng mô tả đi kèm** (mỗi row = 1 element) + số hiệu hình ("Hình X-Y").
 
 **QUY TẮC ĐỘ ĐẦY ĐỦ (bắt buộc — chi tiết ở reference/design-structure.md):** phần MÔ TẢ/ĐẶC TẢ bằng chữ và bảng phải phủ ĐẦY ĐỦ, không rút gọn "vài mục tiêu biểu": đặc tả HẾT mọi use case (không chỉ 2-3), liệt kê HẾT yêu cầu chức năng, đặc tả HẾT mọi bảng CSDL, phủ HẾT module/lớp chính. Giới hạn "2-3"/"một vài" CHỈ áp dụng cho SỐ DIAGRAM vẽ ra, KHÔNG áp dụng cho phần chữ/bảng. Nhóm phần tử cùng dạng vẫn tách từng mục (được viết gọn + tham chiếu "tương tự X") nhưng KHÔNG bỏ sót.
 
@@ -140,24 +152,25 @@ python templates/md-to-docx.py docs/design/tai-lieu.md docs/design/tai-lieu.docx
 ```
 Cần `Pillow` để co ảnh đúng tỉ lệ (thiếu vẫn chạy nhưng chỉ co theo bề rộng). Kiểm tra nhanh sau khi tạo: `python -c "from docx import Document; d=Document('out.docx'); print(len(d.tables),'bảng',len(d.inline_shapes),'ảnh')"`.
 
-## 12 loại diagram (theo design_content.md)
+## Danh sách diagram (theo 17 chương)
 
-| # | File | Loại | Mục document |
+Số lượng **tăng theo dự án**: có bao nhiêu luồng chính thì bấy nhiêu activity/sequence, bao nhiêu entity có vòng đời thì bấy nhiêu state diagram. Danh sách tối thiểu:
+
+| # | File | Loại | Chương |
 |---|---|---|---|
-| 01 | context-diagram | System Context | 1.3 |
-| 02 | usecase | Use Case | 2.1 |
-| 03 | activity-flow1 | Activity (UC chính 1) | 2.2 |
-| 04 | activity-flow2 | Activity (UC chính 2) | 2.2 |
-| 05 | erd-conceptual | Conceptual ERD (Crow's foot) | 2.3 |
-| 06 | architecture | System Architecture | 4.3 |
-| 07 | class-diagram | Class (5 module phụ) | 5.1, 6.1.1 |
-| 07a | class-diagram-main | Class chi tiết module chính | 6.1 |
-| 07b | component-diagram | Component | 5.1 |
-| 08 | erd-physical | Physical ERD | 5.3 |
-| 09 | sequence-flow1 | Sequence UC chính | 6.2 |
-| 10 | sequence-auth | Sequence Auth/Refresh | 6.2 |
-| 11 | sequence-flow2 | Sequence UC phụ | 6.2 |
-| 12 | state-entity | State Diagram | 6.x |
+| 01 | context-diagram | System Context | 2.2 |
+| 02 | usecase | Use Case | 4.2 |
+| 03 | domain-model | Domain Model (phân tích) | 5.1 |
+| 04 | analysis-class | Analysis Class | 5.3 |
+| 05 | activity-<flow> | Activity (mỗi luồng chính 1 file) | 5.4 |
+| 06 | ssd-<uc> | System Sequence Diagram | 5.5 |
+| 07 | architecture | Software Architecture | 6.3 |
+| 08 | component | Component | 6.5 |
+| 09 | design-class | Design Class (chi tiết) | 7.2 |
+| 10 | sequence-<uc> | Sequence (mỗi UC chính 1 file) | 7.6 |
+| 11 | state-<entity> | State (mỗi entity có vòng đời) | 7.7 |
+| 12 | erd | Entity Relationship (Crow's foot) | 8.2 |
+| 13 | deployment | Deployment | 14.1 |
 
 ## Phong cách viết tài liệu
 

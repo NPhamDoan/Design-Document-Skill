@@ -1,242 +1,177 @@
-﻿# Cấu trúc tài liệu thiết kế (7 phần)
+# Cấu trúc tài liệu thiết kế (17 chương + phụ lục)
 
-Tham khảo theo Software Design Document chuẩn cho đồ án sinh viên.
+Theo mẫu **Software Engineering Project Report** (SDD chuẩn cho đồ án), phủ đủ các *design
+viewpoint* của IEEE 1016-2009 và traceability của ISO/IEC/IEEE 42010.
 
-> ## NGUYÊN TẮC ĐỘ ĐẦY ĐỦ (đọc trước khi viết tài liệu)
->
-> Tài liệu phải ĐẦY ĐỦ, không rút gọn kiểu "làm vài mục tiêu biểu":
-> - Use case (2.1-B): đặc tả HẾT mọi UC, không chỉ 2-3.
-> - Yêu cầu chức năng (3.1): liệt kê HẾT (FR-01..FR-N).
-> - Từ điển dữ liệu (6.4): đặc tả HẾT mọi bảng, đủ cột từng bảng.
-> - Component/class (5.1, 6.1): phủ HẾT module/lớp chính.
-> - Nhóm phần tử cùng dạng: vẫn tách từng mục, được viết gọn + tham chiếu "tương tự X", nhưng KHÔNG bỏ sót.
-> - Giới hạn "2-3"/"một vài" CHỈ áp dụng cho SỐ DIAGRAM vẽ ra (tiết kiệm công render), KHÔNG áp dụng cho phần chữ/bảng.
-> - Người dùng yêu cầu trọng tâm chủ đề nào thì viết chủ đề đó SÂU hơn, nhưng vẫn giữ ĐẦY ĐỦ các mục còn lại.
+> **NGUYÊN TẮC BAO TRÙM — ĐẦY ĐỦ, KHÔNG GIỚI HẠN SỐ LƯỢNG:**
+> - Tài liệu phải phủ **mọi chương và mọi mục** dưới đây. Mục nào dự án thực sự không có thì ghi rõ
+>   "Không áp dụng — <lý do>", KHÔNG bỏ trống hay lược đi.
+> - Mọi con số trong template ("2-3", "5 module", "10 bảng") chỉ là ví dụ. **Luôn làm theo số lượng
+>   THỰC TẾ**: đặc tả TẤT CẢ use case, TẤT CẢ endpoint API, TẤT CẢ bảng/cột dữ liệu, TẤT CẢ
+>   module/lớp, TẤT CẢ luồng chính. Không cắt bớt vì "chọn cái quan trọng".
+> - Mỗi diagram bắt buộc kèm **bảng mô tả** đầy đủ mọi thành phần (mỗi dòng = 1 phần tử) + số hiệu
+>   hình ("Hình X-Y").
+> - Mỗi phần tử phải **truy vết được** (chương 15): FR → UC → analysis → design → code → test.
+> - Giới hạn "2-3" / "một vài" (nếu có) CHỈ áp dụng cho **số DIAGRAM vẽ ra** (tiết kiệm công render),
+>   KHÔNG áp dụng cho phần chữ/bảng: use case, FR, từ điển dữ liệu, module/lớp phải liệt kê HẾT.
+>   Nhóm phần tử cùng dạng có thể viết gọn + tham chiếu "tương tự X" nhưng không được bỏ sót mục nào.
+> - Người dùng yêu cầu trọng tâm chủ đề nào thì viết chủ đề đó SÂU hơn, vẫn giữ ĐẦY ĐỦ các mục còn lại.
 
-> **Ánh xạ chuẩn IEEE 1016-2009 (Software Design Description):** cấu trúc 7 phần dưới đây phủ các
-> *design viewpoint* của IEEE 1016. Ánh xạ + các mục BỔ SUNG để phủ đủ chuẩn:
->
-> | Viewpoint (IEEE 1016) | Nằm ở phần |
-> |---|---|
-> | Context | 1.3, 2.1 |
-> | Composition / Structure | 4.3, 5.1 |
-> | Logical | 6.1 (class) |
-> | Dependency | 5.1-B (interface/coupling) |
-> | Information | 2.3, 5.3, 6.4 |
-> | Interface | 3.3 (UI), 5.2 (API) |
-> | Interaction | 6.2 (sequence) |
-> | State dynamics | 6.x (state) |
-> | **Patterns use** | 5.5 (bổ sung) |
-> | **Algorithm** | 6.5 (bổ sung) |
-> | **Resource** | 4.4 (bổ sung) |
->
-> Bắt buộc kèm: **Phần 0 Định danh + Lịch sử thay đổi + Tài liệu tham khảo + Thuật ngữ**,
-> **Stakeholders & mối quan tâm** (1.2), **Design rationale** (4.3-B, để BẮT BUỘC).
+## Ánh xạ IEEE 1016 viewpoint → chương
 
-## PHẦN 0: ĐỊNH DANH TÀI LIỆU (SDD Identification — IEEE 1016)
-- Tên tài liệu, tên dự án, phiên bản, ngày ban hành, tác giả, trạng thái.
-- **Lịch sử thay đổi** (bảng: phiên bản / ngày / người sửa / mô tả thay đổi).
-- **Tài liệu tham khảo** (SRS, chuẩn áp dụng, tài liệu liên quan).
-- **Thuật ngữ & viết tắt** (glossary).
-- Mục lục.
+| Viewpoint (IEEE 1016) | Chương |
+|---|---|
+| Context | 2.2 |
+| Composition / Structure | 6.5, 6.6 |
+| Logical (class) | 5.3, 7.2, 7.3 |
+| Dependency | 6.6, 7.4 |
+| Information | 5.1, 8 |
+| Interface | 9 |
+| Interaction | 5.5, 7.6 |
+| State dynamics | 7.7 |
+| Patterns use | 7.5 |
+| Algorithm | 12.3 (chi tiết xử lý cốt lõi) |
+| Resource | 10.1, 10.2, 14 |
+| Design rationale | 6.2, 7.5, 16 |
 
-## PHẦN 1: TẦM NHÌN VÀ BỐI CẢNH (Project Vision & Context)
+---
 
-### 1.1 Tầm nhìn dự án (DOC 1.1-A: Project Vision Document)
-- Mục tiêu hệ thống
-- Phạm vi (làm gì, không làm gì)
-- Lý do xây dựng
+## Trang bìa & phần đầu (front matter)
+- Tên báo cáo ("BÁO CÁO ĐỒ ÁN KỸ THUẬT PHẦN MỀM"), tên dự án, môn học, phiên bản, ngày.
+- **Thành viên nhóm** (bảng: STT / MSSV / họ và tên / vai trò) + giảng viên hướng dẫn.
+- **MỤC LỤC**, **DANH MỤC HÌNH**, **DANH MỤC BẢNG** (sinh tự động theo Heading style trong Word).
+- **DANH MỤC TỪ VIẾT TẮT** (bảng: từ viết tắt / ý nghĩa) — SRS, SDD, UML, API, UI, DB...
 
-### 1.2 Người dùng và các bên liên quan
-- DOC 1.2-A: User Personas Document (2-3 personas điển hình)
-- DOC 1.2-B: Stakeholder Register + **mối quan tâm thiết kế** (design concerns)
-  - Bảng: bên liên quan / vai trò / **mối quan tâm** (điều họ cần đảm bảo ở thiết kế)
-  - IEEE 1016 yêu cầu nêu rõ concerns để các design view giải quyết chúng
+> Mẫu chuẩn tiếng Việt của tổ chức: xem steering `.kiro` "BÁO CÁO ĐỒ ÁN KỸ THUẬT PHẦN MỀM"
+> (đầy đủ nhãn mục + bảng mẫu). Cấu trúc dưới đây khớp 1-1 với mẫu đó.
 
-### 1.3 Bối cảnh hệ thống (DOC 1.3-A: System Context Diagram)
-- **Diagram**: Context diagram (`01-context-diagram.drawio`)
-- Bảng mô tả: actor, system, external storage, file system
+## Chương 1 — GIỚI THIỆU
+- 1.1 Bối cảnh (background, ngữ cảnh dự án).
+- 1.2 Phát biểu bài toán (vấn đề hệ thống giải quyết).
+- 1.3 Mục tiêu dự án (danh sách mục tiêu).
+- 1.4 Phạm vi: **Trong phạm vi** / **Ngoài phạm vi**.
+- 1.5 Các bên liên quan (bảng: bên liên quan / mô tả / mối quan tâm) — *stakeholders & concerns, IEEE 1016*.
+- 1.6 Định nghĩa / thuật ngữ.
 
-## PHẦN 2: MÔ HÌNH HÓA NGHIỆP VỤ (Business Modeling)
+## Chương 2 — TỔNG QUAN DỰ ÁN
+- 2.1 Góc nhìn sản phẩm (hệ thống nằm ở đâu trong môi trường tổng thể).
+- 2.2 Bối cảnh hệ thống + **Sơ đồ ngữ cảnh** (Context Diagram, "Hình 2-1") + bảng mô tả actor/hệ thống ngoài.
+- 2.3 Tính năng hệ thống (bảng F-01..F-N: tính năng / mô tả).
+- 2.4 Tổng quan công nghệ (bảng: hạng mục / công nghệ).
 
-### 2.1 Mô hình Use Case
-- DOC 2.1-A: Use Case Diagram (`02-usecase.drawio`)
-  - Actors: tất cả người dùng
-  - Use cases: tất cả chức năng chính (UC-01 đến UC-N)
-  - Quan hệ include / extend
-- DOC 2.1-B: Use Case Specifications — ĐẶC TẢ ĐẦY ĐỦ TẤT CẢ use case (UC-01..UC-N), KHÔNG chỉ 2-3 UC. Mỗi UC có mục riêng; UC dạng CRUD giống nhau được viết gọn + tham chiếu "tương tự UC-X" nhưng KHÔNG bỏ sót
-  - Actor, mô tả, điều kiện trước/sau
-  - Luồng chính (numbered steps)
-  - Luồng phụ (alternative flows)
+## Chương 3 — ĐẶC TẢ YÊU CẦU
+- 3.1 Yêu cầu chức năng: bảng FR-01..N (mức ưu tiên) **+ đặc tả từng FR**: mô tả, đầu vào, xử lý, đầu ra, business rules.
+- 3.2 Yêu cầu phi chức năng (bảng NFR: hiệu năng / bảo mật / tin cậy / bảo trì / khả dụng).
+- 3.3 Quy tắc nghiệp vụ (bảng BR-01..N).
+- 3.4 Ràng buộc hệ thống.
+- 3.5 Giả định.
 
-### 2.2 Sơ đồ quy trình (DOC 2.2-A: Process Flow Diagrams)
-- Activity diagrams cho TẤT CẢ luồng nghiệp vụ chính (phần mô tả bằng bảng phủ đầy đủ; số diagram vẽ ra có thể giới hạn ở luồng tiêu biểu)
-- Mỗi diagram: 2 swimlanes (User / Backend)
-- Bảng mô tả: bước, lane, hành động, ghi chú
+## Chương 4 — PHÂN TÍCH USE CASE
+- 4.1 Tác nhân (bảng: actor / mô tả).
+- 4.2 **Sơ đồ Use Case** ("Hình 4-1") + bảng quan hệ include/extend.
+- 4.3 Danh sách Use Case (bảng UC-01..N: use case / actor / mô tả).
+- 4.4 **Đặc tả TẤT CẢ Use Case** — mỗi UC: primary actor, goal, tiền/hậu điều kiện, kịch bản
+  chính (bảng bước: actor ↔ hệ thống), luồng thay thế (Ax), luồng ngoại lệ (Ex), business rules
+  liên quan, yêu cầu liên quan (FR). UC đơn giản lặp lại có thể theo mẫu gọn nhưng vẫn phải đủ mọi UC.
 
-### 2.3 Mô hình dữ liệu khái niệm (DOC 2.3-A: Conceptual ERD)
-- **Diagram**: `05-erd-conceptual.drawio`
-- Sử dụng Crow's foot notation
-- Phân loại entity: Core / Reference / Supporting
-- KHÔNG có FK columns, KHÔNG có data types vật lý
-- Chi tiết quy tắc xem `erd-rules.md`
+## Chương 5 — PHÂN TÍCH HỆ THỐNG
+- 5.1 Mô hình miền (domain model) + **Sơ đồ Domain Model** ("Hình 5-1").
+- 5.2 Lớp phân tích (bảng: lớp / trách nhiệm).
+- 5.3 **Sơ đồ lớp phân tích** ("Hình 5-2").
+- 5.4 **Activity diagram cho MỌI luồng nghiệp vụ chính** (mỗi UC/luồng 1 sơ đồ) + bảng bước/lane.
+- 5.5 **System Sequence Diagram (SSD)** cho các UC chính.
 
-## PHẦN 3: ĐẶC TẢ YÊU CẦU (Requirements Specification)
+## Chương 6 — KIẾN TRÚC PHẦN MỀM
+- 6.1 Tổng quan kiến trúc.
+- 6.2 Mẫu kiến trúc (Layered / MVC / Clean / Hexagonal...) + **lý do chọn** (*design rationale*).
+- 6.3 **Sơ đồ kiến trúc** ("Hình 6-1") + bảng mô tả tier/thành phần.
+- 6.4 Các tầng hệ thống (Presentation / Application-Service / Domain / Infrastructure) — trách nhiệm từng tầng.
+- 6.5 **Sơ đồ Component** ("Hình 6-2") + provided/required interface.
+- 6.6 Cấu trúc module (bảng: module / trách nhiệm / phụ thuộc).
 
-### 3.1 Yêu cầu chức năng (DOC 3.1-A: Functional Requirements List)
-Bảng FR-01 đến FR-N với cột:
-- ID (FR-01, FR-02...)
-- Chức năng
-- Mô tả ngắn
+## Chương 7 — THIẾT KẾ CHI TIẾT
+- 7.1 Tổng quan thiết kế (analysis model → design model).
+- 7.2 **Sơ đồ lớp thiết kế** ("Hình 7-1") — đầy đủ chi tiết.
+- 7.3 Đặc tả lớp — cho **TẤT CẢ lớp thiết kế**: mục đích, bảng thuộc tính (tên/kiểu/visibility/mô tả),
+  bảng phương thức (tên/tham số/kiểu trả về/mô tả), quan hệ.
+- 7.4 Thiết kế interface — mỗi interface: mục đích, bảng phương thức.
+- 7.5 **Mẫu thiết kế** (*patterns use viewpoint*) — mỗi mẫu: pattern, problem, solution, participants,
+  sơ đồ mẫu, cách hiện thực, lợi ích, đánh đổi, FR/UC liên quan.
+- 7.6 **Sequence diagram** cho các UC chính + mô tả tương tác từng bước.
+- 7.7 **State diagram** cho entity có vòng đời + bảng trạng thái.
 
-### 3.2 Yêu cầu phi chức năng (DOC 3.2-A: Non-Functional Requirements)
-Bảng NFR theo các tiêu chí:
-- Hiệu năng (performance)
-- Bảo mật (security)
-- Bảo trì (maintainability)
-- Mở rộng (scalability)
-- Khả dụng (availability)
+## Chương 8 — THIẾT KẾ DỮ LIỆU
+- 8.1 Mô hình dữ liệu.
+- 8.2 **ERD** ("Hình 8-1") — Crow's foot (chi tiết quy tắc: `erd-rules.md`).
+- 8.3 Lược đồ CSDL — cho **TẤT CẢ bảng**: bảng cột (tên / kiểu / ràng buộc / mô tả).
+- 8.4 Từ điển dữ liệu (bảng: entity / attribute / type / mô tả) — đủ mọi thực thể.
+- 8.5 Kiểm tra hợp lệ dữ liệu (validation + ràng buộc DB).
 
-### 3.3 Phác thảo giao diện (Wireframes) — TÙY CHỌN
-- DOC 3.3-A: UI Wireframes Document (low-fidelity)
-- DOC 3.3-B: Navigation Flow Diagram
-- Có thể bỏ qua nếu không có thời gian
+## Chương 9 — THIẾT KẾ GIAO DIỆN
+- 9.1 Giao diện người dùng — mỗi màn hình: hình, mục đích, kiểm tra đầu vào.
+- 9.2 Thiết kế API — cho **TẤT CẢ endpoint**: mục đích, auth, request, response, bảng HTTP status.
+- 9.3 Giao diện ngoài (bảng: hệ thống / interface / mục đích).
 
-### 3.4 Ma trận ưu tiên yêu cầu (MoSCoW)
-- Must have
-- Should have
-- Could have
-- Won't have
+## Chương 10 — THIẾT KẾ CHẤT LƯỢNG & BẢO MẬT
+- 10.1 Hiệu năng. 10.2 Khả năng mở rộng. 10.3 Độ tin cậy. 10.4 Khả năng bảo trì.
+- 10.5 Bảo mật: xác thực, phân quyền (bảng role/permission), bảo vệ dữ liệu (mã hoá, hashing, HTTPS).
+- 10.6 Khả năng kiểm thử.
 
-## PHẦN 4: KIẾN TRÚC TỔNG THỂ (High-Level Architecture)
+## Chương 11 — XỬ LÝ LỖI & LOGGING
+- 11.1 Chiến lược xử lý lỗi. 11.2 Validation. 11.3 Mã lỗi (bảng ERR-xxx). 11.4 Logging.
 
-### 4.1 Động lực kiến trúc (DOC 4.1-A: Architectural Drivers)
-Bảng các yếu tố kiến trúc với:
-- Yếu tố (đơn giản / dễ deploy / mở rộng / hiệu năng)
-- Yêu cầu cụ thể
-- Cách giải quyết (kiến trúc, pattern, công nghệ)
+## Chương 12 — HIỆN THỰC
+- 12.1 Môi trường phát triển (bảng: thành phần / phiên bản-công nghệ).
+- 12.2 Cấu trúc thư mục dự án.
+- 12.3 Các hiện thực quan trọng — mô tả + trích code cốt lõi + **thuật toán cốt lõi**
+  (*algorithm viewpoint*: pseudocode/các bước + độ phức tạp).
+- 12.4 Hiện thực mẫu thiết kế (từ chương 7 → source).
 
-### 4.2 Lựa chọn Technology Stack (DOC 4.2-A)
-Bảng công nghệ với:
-- Thành phần (Backend, Frontend, DB...)
-- Công nghệ được chọn
-- Lý do chọn
+## Chương 13 — KIỂM THỬ
+- 13.1 Chiến lược. 13.2 Unit test. 13.3 Integration. 13.4 System.
+- 13.5 Test case (bảng TC-xxx: requirement / UC / tiền điều kiện / dữ liệu / kỳ vọng / thực tế / trạng thái).
+- 13.6 Tổng kết kiểm thử (bảng: loại / tổng / pass / fail).
 
-### 4.3 Kiến trúc hệ thống
-- DOC 4.3-A: System Architecture Diagram (`06-architecture.drawio`)
-  - Phân tier: Client / Gateway / Service / Data
-  - Bảng mô tả: tier, thành phần, vai trò
-- DOC 4.3-B: ADRs (Architecture Decision Records) — **Design Rationale (IEEE 1016, BẮT BUỘC)**
-  - 3-5 quyết định kiến trúc quan trọng
-  - Format: Context / Decision / Consequences (vì sao chọn, đánh đổi, phương án loại bỏ)
+## Chương 14 — TRIỂN KHAI
+- 14.1 **Sơ đồ triển khai** ("Hình 14-1"). 14.2 Môi trường triển khai (bảng). 14.3 Quy trình triển khai.
 
-### 4.4 Tài nguyên & hiệu năng (DOC 4.4-A: Resource viewpoint — IEEE 1016)
-Bảng ngân sách tài nguyên (giúp đánh giá khả thi vận hành):
-- Bộ nhớ (RAM cho model/cache), CPU/GPU
-- Luồng/đồng thời (thread, worker, connection pool)
-- Ngân sách thời gian/độ trễ mỗi thao tác chính
-- Giới hạn ngoài (quota API, rate limit, kích thước file)
+## Chương 15 — TRUY VẾT (Traceability)
+- 15.1 FR → UC. 15.2 UC → analysis class. 15.3 Analysis → design. 15.4 Design → code. 15.5 FR → test case.
+- Trình bày dạng bảng, phủ đủ mọi FR/UC.
 
-## PHẦN 5: KIẾN TRÚC COMPONENT & DỮ LIỆU (Component & Data Architecture)
+## Chương 16 — QUYẾT ĐỊNH THIẾT KẾ & ĐÁNH GIÁ (Design rationale — IEEE 1016)
+- 16.1 Các phương án thiết kế (mỗi quyết định: problem, alternative 1/2...).
+- 16.2 Phương án được chọn. 16.3 Lý do. 16.4 Đánh đổi (ưu/nhược). 16.5 Hạn chế. 16.6 Hướng phát triển.
 
-### 5.1 Thiết kế Component
-- DOC 5.1-A: Component Diagram (`07b-component-diagram.drawio`)
-  - 4 layers: Frontend / Gateway / Service / Data
-  - Provided / Required interfaces giữa components
-- DOC 5.1-B: Component Responsibility Matrix
-  - Bảng module: Controller / Service / Interface / Repository
+## Chương 17 — KẾT LUẬN
+- 17.1 Tóm tắt. 17.2 Mức đạt mục tiêu (bảng: mục tiêu / kết quả). 17.3 Bài học.
 
-### 5.2 Thiết kế API (DOC 5.2-A: API Specification)
-Bảng endpoints theo nhóm:
-- Auth APIs (POST /auth/login, /auth/refresh...)
-- Business APIs (POST /resource, GET /resource...)
-- Admin APIs
-Mỗi endpoint: Method, Path, Mô tả, Auth required?
+## TÀI LIỆU THAM KHẢO
+- IEEE 1016, ISO/IEC/IEEE 42010, UML spec, và nguồn khác.
 
-Bảng status codes: 200, 201, 400, 401, 403, 404, 409, 500
+## PHỤ LỤC (đưa phần chi tiết dài xuống đây để thân bài gọn)
+- A — Đặc tả use case đầy đủ (bổ sung). B — Sơ đồ UML bổ sung. C — Đặc tả API đầy đủ.
+- D — Lược đồ CSDL đầy đủ. E — Test case đầy đủ. F — Giao diện (thêm ảnh). G — Cấu trúc mã nguồn.
 
-### 5.3 Kiến trúc cơ sở dữ liệu vật lý
-- DOC 5.3-A: Physical ERD (`08-erd-physical.drawio`)
-  - Hiển thị FK columns, data types, constraints
-  - Mũi tên 1:N với CASCADE/RESTRICT
-- DOC 5.3-B: Database Schema Specification
-  - Bảng tổng quan: tên bảng, mục đích, PK, ghi chú
-  - Bảng chi tiết LichSuCapNhat hoặc bảng audit nếu có
+---
 
-### 5.4 Thiết kế Bảo mật (DOC 5.4-A: Security Design)
-- Authentication (JWT, cookie session, OAuth...)
-- Authorization (vai trò, RBAC)
-- Password hashing (bcrypt, argon2)
-- Rate limiting
-- Input validation
-- HTTPS, CORS
+## Danh sách diagram tối thiểu (theo 17 chương)
 
-### 5.5 Mẫu thiết kế (DOC 5.5-A: Design Patterns — Patterns use viewpoint, IEEE 1016)
-Bảng các mẫu thiết kế áp dụng:
-- Tên mẫu (Strategy, Factory, Repository, Pipeline, Adapter...)
-- Nơi áp dụng trong hệ thống
-- Vấn đề mẫu giải quyết
+| # | File | Loại | Chương |
+|---|---|---|---|
+| 01 | context-diagram | System Context | 2.2 |
+| 02 | usecase | Use Case | 4.2 |
+| 03 | domain-model | Domain Model (phân tích) | 5.1 |
+| 04 | analysis-class | Analysis Class | 5.3 |
+| 05 | activity-<flow> | Activity (mỗi luồng chính 1 file) | 5.4 |
+| 06 | ssd-<uc> | System Sequence Diagram | 5.5 |
+| 07 | architecture | Software Architecture | 6.3 |
+| 08 | component | Component | 6.5 |
+| 09 | design-class | Design Class (chi tiết) | 7.2 |
+| 10 | sequence-<uc> | Sequence (mỗi UC chính 1 file) | 7.6 |
+| 11 | state-<entity> | State (mỗi entity có vòng đời) | 7.7 |
+| 12 | erd | Entity Relationship (Crow's foot) | 8.2 |
+| 13 | deployment | Deployment | 14.1 |
 
-## PHẦN 6: THIẾT KẾ CHI TIẾT (Detailed Design - LLD)
-
-### 6.1 Thiết kế Lớp (DOC 6.1-A: Detailed Class Diagrams)
-- **Diagram chính**: `07a-class-diagram-<main>.drawio` (module quan trọng nhất, full chi tiết)
-  - Controller, Service, Interfaces, Repositories
-  - Domain entities (data models)
-  - Error hierarchy
-  - Quan hệ: uses, depends on, implements, extends, throws
-- **Diagram phụ**: `07-class-diagram.drawio` (5 module còn lại, compact)
-
-### 6.2 Sơ đồ Tuần tự (DOC 6.2-A: Sequence Diagrams)
-3 sequence diagrams:
-- `09-sequence-<flow1>.drawio` — luồng chính (tạo entity)
-- `10-sequence-<auth>.drawio` — luồng auth/refresh token (có alt cases)
-- `11-sequence-<flow2>.drawio` — luồng phụ (cập nhật + audit)
-
-Mỗi diagram có bảng mô tả messages: từ ai → đến ai → message → ghi chú
-
-### 6.3 Thiết kế UI High-Fidelity — TÙY CHỌN
-Bỏ qua nếu không có Figma mockups
-
-### 6.4 Chi tiết CSDL (DOC 6.4-A: Complete Data Dictionary)
-BẮT BUỘC đặc tả TẤT CẢ bảng trong CSDL (không bỏ sót, không rút gọn "vài bảng tiêu biểu"); số bảng đúng theo lược đồ thực tế. Cho MỖI bảng:
-- Bảng cột với: tên cột, kiểu dữ liệu, ràng buộc (PK, FK, UNIQUE, NOT NULL, CHECK), mô tả nghiệp vụ
-
-### State Diagram (nếu có entity với lifecycle)
-- `12-state-<entity>.drawio` — sơ đồ trạng thái cho entity chính (HoSo, Order, Ticket...)
-- Bảng mô tả trạng thái: tên, ý nghĩa, transitions
-
-### 6.5 Thiết kế thuật toán (DOC 6.5-A: Algorithm viewpoint — IEEE 1016)
-Cho các xử lý cốt lõi (không hiển nhiên) — mô tả bằng pseudocode/các bước + độ phức tạp:
-- Thuật toán chính (vd xếp hạng/tìm kiếm, hợp nhất, tính toán nghiệp vụ)
-- Tham số + điều kiện biên
-- Độ phức tạp / lưu ý hiệu năng
-
-## PHẦN 7: TRIỂN KHAI & TEST (Implementation & Testing)
-
-### 7.1 Phân chia công việc (WBS)
-Bảng sprints:
-- Sprint 1-N
-- Nội dung mỗi sprint
-- Kết quả/output cuối sprint
-
-### 7.2 Xử lý lỗi (DOC 7.2-A: Error Handling)
-- Lớp validation backend
-- DomainError hierarchy
-- Try-catch tổng ở controller
-- Frontend Axios interceptor
-
-### 7.3 Rủi ro và xử lý (Risk Register)
-Bảng rủi ro với:
-- Mô tả rủi ro
-- Mức độ (Cao / Trung bình / Thấp)
-- Cách xử lý
-
-### 7.4 Tiêu chuẩn lập trình (Coding Standards) — TÙY CHỌN
-- Quy ước tên file, biến
-- Code style (Prettier, ESLint config)
-
-### 7.5 Kết luận
-- Đã hoàn thành các chức năng
-- Hạn chế còn tồn tại
-- Hướng phát triển tương lai
+> Số file **tăng theo dự án**: có bao nhiêu luồng chính thì bấy nhiêu activity/sequence, có bao nhiêu
+> entity có vòng đời thì bấy nhiêu state diagram. Không giới hạn ở danh sách trên.
